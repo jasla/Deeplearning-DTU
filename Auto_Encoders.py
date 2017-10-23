@@ -1,5 +1,5 @@
 import os
-path = "C:\\Users\\jasla\\Dropbox\\phd\\Kurser\\02456 Deep Learning\\Project\\python"
+path = "\\02456 Deep Learning\\Project\\python"
 
 os.chdir(path)
 
