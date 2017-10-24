@@ -7,7 +7,7 @@ We need to figure out the following:
   
     Vary hyper parameters (batch_size, learning_rate, beta, reg_scale)
     
-    Implement weight warm up / Free bit
+    Implement weight warm up / Free bit (JSL: Done)
   
   Use L-BFGS as optimizer
   
