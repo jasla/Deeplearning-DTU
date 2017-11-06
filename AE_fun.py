@@ -103,7 +103,7 @@ def Sparse_Non_Neg_AE(x_train, x_valid, **kwargs):
     
     loss_per_image = tf.reduce_sum(loss_per_pixel,1)
     
-    loss_pure = tf.reduce_mean(loss_per_image, name="mean_error")
+    loss_pure = 0.5 * tf.reduce_mean(loss_per_image, name="mean_error")
     
     params = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
     
