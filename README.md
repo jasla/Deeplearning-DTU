@@ -16,3 +16,8 @@ We need to figure out the following:
 	
 Auto Encoder is now implemented in the function Sparse_Non_Neg_AE with required inputs x_train and x_valid, besides that a number of parameters can be passed to the function (see AE_fun.py)
 Automatic stop after extra_epoch epochs is implemented. I tried for both Cross Entropy and Least Squares loss, it seems to work quite nice! (see plots)
+
+I found a bug in our cost function: We take average over all pixels instead over all images.
+The first layer is nice, the second layer is not!
+
+I implemented a function to train the softmax layer as well
