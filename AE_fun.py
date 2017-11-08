@@ -6,11 +6,7 @@ Created on Wed Nov  1 09:49:51 2017
 """
 
 #%% load required packages 
-#import matplotlib.pyplot as plt
-#from IPython.display import Image, display, clear_output
-from IPython import get_ipython
-get_ipython().run_line_magic('matplotlib','nbagg')
-get_ipython().run_line_magic('matplotlib','inline')
+import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 #from sklearn.utils import shuffle
@@ -22,6 +18,8 @@ def Sparse_Non_Neg_AE(x_train, x_valid, **kwargs):
 
 
 #%% Unload check
+    do_plot = kwargs.get('do_plot',False)
+    plot_filename = kwargs.get('plot_filename','trainAE.png')
     modelpath = kwargs.get('modelpath',None)
     train_thresh = kwargs.get('train_thresh',None)
     num_hidden = kwargs.get('num_hidden',196)
@@ -161,9 +159,9 @@ def Sparse_Non_Neg_AE(x_train, x_valid, **kwargs):
     
     cur_loss = 0
     
-    #if do_plot:
-    #    plt.figure(figsize=(12, 24))
-    
+    if do_plot:
+        plt.figure(figsize=(10, 6))
+
     try:
         for epoch in range(num_epochs):
             #Forward->Backprob->Update params
@@ -235,19 +233,28 @@ def Sparse_Non_Neg_AE(x_train, x_valid, **kwargs):
             
             # Plot progression while training
             # To be implemented later
-#            if do_plot and ((epoch+1) % 100 is 0 or (epoch+1) is num_epochs):
-#                updates = [i*batch_size*num_batches_train for i in range(1,np.shape(train_loss)[0]+1)]
+            if do_plot and (epoch % 10 == 0 or epoch == 1):
+                updates = [i*batch_size*num_batches_train for i in range(1,np.shape(train_loss)[0]+1)]
 #                # Plotting
-#                plt.subplot(num_classes+1,2,1)
-#                plt.title('Error')
-#                plt.xlabel('Updates'), plt.ylabel('Error')
-#                plt.semilogy(updates, train_loss, color="black")
-#                plt.semilogy(updates, train_loss_pure, color="red")
-#                plt.semilogy(updates, valid_loss, color="grey")
-#                plt.legend(['Train Error','Pure error', 'Valid Error'])
-#                plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
-#                plt.grid('on')
-#                
+                plt.subplot(1,2,1)
+                plt.title('Error')
+                plt.xlabel('Updates'), plt.ylabel('Error')
+                plt.semilogy(updates, train_loss, color="black")
+                plt.semilogy(updates, train_loss_pure, color="red")
+                plt.semilogy(updates, valid_loss, color="grey")
+                plt.legend(['Train Error','Pure error', 'Valid Error'])
+                plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
+                plt.grid('on')
+                
+                plt.subplot(1,2,2)
+                plt.title('Regularization')
+                plt.xlabel('Updates'), plt.ylabel('Regularization')
+                plt.semilogy(updates,train_sparse,color = "black")
+                plt.semilogy(updates,train_reg,color = "gray")
+                plt.legend(['Sparseness','Weight decay'])
+                plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
+                plt.grid('on')
+
 #                plt.subplot(num_classes+1,2,2)
 #                plt.title('Regularization')
 #                plt.xlabel('Updates'), plt.ylabel('Regularization')
@@ -289,7 +296,9 @@ def Sparse_Non_Neg_AE(x_train, x_valid, **kwargs):
             
     except KeyboardInterrupt:
         pass
-    
+
+    if do_plot:
+        plt.savefig('plots/' + plot_filename)
     return(sess,train_loss,train_loss_pure,valid_loss)
     
     

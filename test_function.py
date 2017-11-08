@@ -4,29 +4,35 @@ Created on Thu Nov  2 08:49:28 2017
 
 @author: jasla
 """
+from __future__ import division, print_function
 
-import os
-path = "C:\\Users\\jasla\\Dropbox\\phd\\Kurser\\02456 Deep Learning\\Project\\python"
-
-os.chdir(path)
-
+USE_IPYTHON = True
+SHOW_PLOTS = True
+LOAD_FIRST_AE = True
+LOAD_SECOND_AE = False
 
 #%% load libraries
-from __future__ import division, print_function
+if USE_IPYTHON:
+    import os
+    path_jt = "C:\\Users\\jakob\\Documents\\GitHub\\Deeplearning-DTU\\"
+    #path = "C:\\Users\\jasla\\Dropbox\\phd\\Kurser\\02456 Deep Learning\\Project\\python"
+    #os.chdir(path)
+    os.chdir(path_jt)
+    from IPython.display import Image, display, clear_output
+    from IPython import get_ipython
+    get_ipython().run_line_magic('matplotlib','nbagg')
+    get_ipython().run_line_magic('matplotlib','inline')
+
+from helper_functions import load_data
 import AE_fun as AE
 import numpy as np
 import matplotlib.pyplot as plt
-from IPython.display import Image, display, clear_output
-from IPython import get_ipython
-get_ipython().run_line_magic('matplotlib','nbagg')
-get_ipython().run_line_magic('matplotlib','inline')
 #import sklearn.datasets
 import tensorflow as tf
 from tensorflow import layers
 #from tensorflow.python.framework.ops import reset_default_graph
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
-from sklearn.utils import shuffle
 
 # In[2]:
 
@@ -34,55 +40,12 @@ def sigmoid(x):
     sig = 1/(1+np.exp(-x))
     return sig
 
-
-
-#%%
-
-# To speed up training we'll only work on a subset of the data containing only the numbers 0, 1.
-data = np.load('mnist.npz')
-# Possible classes
-classes = list(range(10))
-# Set classes used, starting from 0.
-#included_classes = [0, 1, 4, 9] 
-#included_classes = [0, 1, 4, 9, 5, 8]
-included_classes = [0,1,2,3,4,5,6,7,8,9]
-idxs_train = []
-idxs_valid = []
-idxs_test = []
-num_classes = 0
-for c in included_classes:
-    if c in classes:
-        num_classes += 1
-        idxs_train += np.where(data['y_train'] == c)[0].tolist()
-        idxs_valid += np.where(data['y_valid'] == c)[0].tolist()
-        idxs_test += np.where(data['y_test'] == c)[0].tolist()
-
-print("Number of classes included:", num_classes)
-#x_train = data['X_train'][idxs_train].astype('float32')
-x_train = data['X_train'].astype('float32')
-#targets_train = data['y_train'][idxs_train].astype('int32')
-targets_train = data['y_train'].astype('int32')
-
-x_train, targets_train = shuffle(x_train, targets_train, random_state=1234)
-
-
-#x_valid = data['X_valid'][idxs_valid].astype('float32')
-#targets_valid = data['y_valid'][idxs_valid].astype('int32')
-x_valid = data['X_valid'].astype('float32')
-targets_valid = data['y_valid'].astype('int32')
-
-#x_test = data['X_test'][idxs_test].astype('float32')
-#targets_test = data['y_test'][idxs_test].astype('int32')
-x_test = data['X_test'].astype('float32')
-targets_test = data['y_test'].astype('int32')
-
-print("training set dim(%i, %i)." % x_train.shape)
-print("validation set dim(%i, %i)." % x_valid.shape)
-print("test set dim(%i, %i)." % x_test.shape)
+#%% Load data
+included_classes, num_classes, c, x_train, targets_train, x_valid, targets_valid, x_test, targets_test = load_data()
 
 
 #%%plot a few MNIST examples
-if False:
+if SHOW_PLOTS:
     idx = 0
     canvas = np.zeros((28*10, 10*28))
     for i in range(10):
@@ -93,9 +56,10 @@ if False:
     plt.axis('off')
     plt.imshow(canvas, cmap='gray')
     plt.title('MNIST handwritten digits')
-
+    plt.show(block=False)
 #%% Train first Auto Encoder
-if False:
+ae_1_plot_filename = 'AE-1-train.png'
+if not LOAD_FIRST_AE:
     out = AE.Sparse_Non_Neg_AE(x_train = x_train, x_valid = x_valid,use_LS = True,num_epochs = 1000
 #                               , train_thresh = 784*0.0194
                                ,train_thresh = 10
@@ -103,6 +67,8 @@ if False:
                                , extra_epoch = 300
 #                               ,log_start = -2
                                ,weights_burn_in = np.linspace(0.1,1,num = 10)
+                               ,do_plot=SHOW_PLOTS
+                               ,plot_filename = ae_1_plot_filename
                                )
     
     sess,train_loss,train_loss_pure,valid_loss = tuple(out)
@@ -120,6 +86,8 @@ else:
         params = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
         param_1 = tuple(sess.run(params))
     tf.reset_default_graph()
+    
+    display(Image(filename='plots/'+ae_1_plot_filename))
 
 #%% Evaluate first autoencoder
 enc_train = sigmoid(np.matmul(a=x_train,b = param_1[0]) + param_1[1])
@@ -145,6 +113,7 @@ for i, c in enumerate(included_classes):
     legend_handles.append(h)
 plt.grid('on')
 plt.legend(legend_handles, included_classes)
+plt.show()
 
 #plt.savefig('latent_space_LS_corrected_cost_164_epoch.png')
 #plt.savefig('latent_space_LS_corrected_cost_413_epoch.png')
@@ -231,18 +200,21 @@ cbar = plt.colorbar(cax)
 #plt.savefig('Decoding_weights_LS_corrected_cost_413_epoch.png')
 
 #%%Train second Auto Encoder
-if False:
+ae_2_plot_filename = "AE-2-train.png"
+if not LOAD_SECOND_AE:
     hiddenSizeL2 = 20;
     out2 = AE.Sparse_Non_Neg_AE(x_train = enc_train, x_valid = enc_valid,use_LS = True,
                                 num_epochs = 2000,num_hidden = hiddenSizeL2
 #                                ,tau = 0.0001
 #                                ,batch_size = 50000
-                                ,p_target = 0.05
+                                ,p_target = 0.09
 #                                ,train_thresh = 0.0194 * enc_train.shape[1]
                                 ,train_thresh = 2
-                                ,epoch_burn_in = 10
+                                ,epoch_burn_in = 60
                                 ,extra_epoch = 300
-                                ,weights_burn_in = np.linspace(0.1,1,num = 10)
+                                ,weights_burn_in = np.linspace(0.1,1,num = 30)
+                                ,do_plot = SHOW_PLOTS
+                                ,plot_filename = ae_2_plot_filename
 #                                ,modelpath = "models/AE_2.ckpt"
                                 )
     
@@ -260,6 +232,8 @@ else:
         params2 = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
         param_2 = tuple(sess2.run(params2))
     tf.reset_default_graph()
+    
+    display(Image(filename='plots/'+ae_2_plot_filename))
         
 #%% Evaluate first autoencoder
 
@@ -448,13 +422,13 @@ print("l_out", res_forward_pass[0].shape)
 
 #%% Train network
 num_samples_train = x_train.shape[0]
-    num_batches_train = num_samples_train // batch_size
-    #updates = []
-    
-    train_loss = []
-    train_loss_pure = []
-    train_sparse = []
-    train_reg = []
-    valid_loss = []
+num_batches_train = num_samples_train // batch_size
+#updates = []
+
+train_loss = []
+train_loss_pure = []
+train_sparse = []
+train_reg = []
+valid_loss = []
 
 
