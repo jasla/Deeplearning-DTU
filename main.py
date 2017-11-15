@@ -57,7 +57,7 @@ def softmax(x):
 data = np.load('mnist.npz')
 # Possible classes
 classes = list(range(10))
-classes_plot = [i + 1 for i in classes]
+classes_plot = classes
 # Set classes used, starting from 0.
 #included_classes = [0, 1, 4, 9] 
 #included_classes = [0, 1, 4, 9, 5, 8]
