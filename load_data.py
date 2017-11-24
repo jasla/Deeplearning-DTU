@@ -7,13 +7,13 @@ def load_raman_map():
     meas = pd.read_csv('data/raman_100x100_wavenumbers1000_hotspots10_0dB_withinteractions.csv', header=None)
     print(meas.shape)
     substance1_map = meas.iloc[0,:]
-    substance1_r = substance1_map.values.reshape(10000,1000)
+    substance1_r = substance1_map.values.reshape(1000,10000)
 
     substance2_map = meas.iloc[1,:]
-    substance2_r = substance2_map.values.reshape(10000,1000)
+    substance2_r = substance2_map.values.reshape(1000,10000)
 
     mix_map = meas.iloc[2,:]
-    mix_r = mix_map.values.reshape(10000,1000)
+    mix_r = mix_map.values.reshape(1000,10000)
 
 
 
