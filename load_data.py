@@ -4,16 +4,24 @@ import matplotlib.pyplot as plt
 def load_raman_map():
 
 
-    meas = pd.read_csv('data/raman_40x40_wavenumbers500_hotspots10_0dB_withinteractions.csv', header=None)
+    meas = pd.read_csv('data/raman_100x100_wavenumbers1000_hotspots10_0dB_withinteractions.csv', header=None)
     print(meas.shape)
     substance1_map = meas.iloc[0,:]
-    substance1_r = substance1_map.values.reshape(1600,500)
+    substance1_r = substance1_map.values.reshape(10000,1000)
 
     substance2_map = meas.iloc[1,:]
-    substance2_r = substance2_map.values.reshape(1600,500)
+    substance2_r = substance2_map.values.reshape(10000,1000)
 
     mix_map = meas.iloc[2,:]
-    mix_r = mix_map.values.reshape(1600,500)
+    mix_r = mix_map.values.reshape(10000,1000)
+
+
+
+    return substance1_r,substance2_r,mix_r
+
+
+if __name__=="__main__":
+    substance1_r,substance2_r,mix_r = load_raman_map()
 
     plt.figure(figsize=(12,12))
     plt.subplot(3,1,1)
@@ -24,10 +32,4 @@ def load_raman_map():
     plt.subplot(3,1,3)
     plt.plot(mix_r)
 
-    plt.show(block=False)
-
-    return substance1_r,substance2_r,mix_r
-
-
-if __name__=="__main__":
-    substance1_r,substance2_r,mix_r = load_raman_map()
+    plt.show(block=True)
