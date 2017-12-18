@@ -18,4 +18,10 @@ A.~P. Dempster, N.~M. Laird, and D.~B. Rubin,
 \newblock ``{Maximum Likelihood from Incomplete Data via the EM Algorithm},''
   1977.
 
+\bibitem{Vincent}
+Pascal Vincent, Hugo Larochelle, Yoshua Bengio, and Pierre-Antoine Manzagol,
+\newblock ``{Extracting and Composing Robust Features with Denoising
+  Autoencoders},''
+\newblock .
+
 \end{thebibliography}
