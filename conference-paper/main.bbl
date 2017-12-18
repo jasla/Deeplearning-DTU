@@ -7,4 +7,15 @@ Ehsan Hosseini-Asl, Jacek~M. Zurada, and Olfa Nasraoui,
 \newblock {\em IEEE Transactions on Neural Networks and Learning Systems}, vol.
   27, no. 12, pp. 2486--2498, dec 2016.
 
+\bibitem{Seung1999}
+H.~Sebastian Seung and Daniel~D. Lee,
+\newblock ``{Learning the parts of objects by non-negative matrix
+  factorization},''
+\newblock {\em Nature}, vol. 401, no. 6755, pp. 788--791, oct 1999.
+
+\bibitem{Dempster1977}
+A.~P. Dempster, N.~M. Laird, and D.~B. Rubin,
+\newblock ``{Maximum Likelihood from Incomplete Data via the EM Algorithm},''
+  1977.
+
 \end{thebibliography}

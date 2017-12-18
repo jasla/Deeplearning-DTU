@@ -73,6 +73,8 @@ Sparse autoencoder
 \section{Prior work}
 \label{sec:prior}
 
+
+
 Primary reference \cite{Hosseini-Asl2016}
 
 \section{Methods}
@@ -82,7 +84,32 @@ Dataset origin, description of wavenumbers, raman map size. Definitions for the 
 
 Compare with NMF?
 
-\subsection{Non-negativity constraint}
+\subsection{Non-negative matrix factorization}
+
+Non-negative matrix factorization (NMF) consists of factorizing a original matrix $V$, with only positive elements, into two positive matrices $W$ and $H$. \cite{Seung1999}
+
+
+\begin{equation}
+V \approx W \times H
+\end{equation}
+
+Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship given the rows of $V$. Completing the intuitive point of view, $W$ and $W$ can be seen as components that combined approximate the original signal $V$.
+
+An iterative algorithm is considered for NMF, which shares similar monotonic convergence as the EM algorithm. \cite{Dempster1977}. Moreover, the rules of update preserve non-negativity of $W$ and $H$. The algorithm approaches the problem by initialization of $W$ and $H$ as non-negative, and then update the values in $W$ and $H$ until local maximima is obtained and the both matrixes are considered stable. The rules can be defined as:
+
+\begin{equation}
+H^{n+1} \leftarrow H^{n} \frac{(W^n)^TV}{(W^n)^TW^nH^n}
+\end{equation}
+and 
+\begin{equation}
+W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{WH^{n+1}(H^{n+1})^T}
+\end{equation}
+
+\textbf{Add how NMF/MCR is used in raman spectroscopy. Add this to prior work}
+
+\subsection{Sparse auto-encoder with non-negativity constraint}
+
+\textbf{Sparse auto-encoders, basic theory, need good citation here. Integrate it with the work done by main paper}
 
 Primary reference implementation. Describe the constraint and the training architecture
 
