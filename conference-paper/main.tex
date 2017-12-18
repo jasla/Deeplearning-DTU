@@ -95,7 +95,7 @@ Non-negative matrix factorization (NMF) consists of factorizing a original matri
 V \approx W \times H
 \end{equation}
 
-Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship given the rows of $V$. Completing the intuitive point of view, $W$ and $W$ can be seen as components that combined approximate the original signal $V$.
+Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship with the columns of $V$. So for instance, a matrix V of size $n \times m$ can be factorized into a matrix $W$ of size $n \times k$ and a matrix $H$ of size $k \times m$, where $k$ is the number of components. Completing the intuitive point of view, $W$ and $W$ can be seen as components that combined approximate the original signal $V$.
 
 An iterative algorithm is considered for NMF, which shares similar monotonic convergence as the EM algorithm. \cite{Dempster1977}. Moreover, the rules of update preserve non-negativity of $W$ and $H$. The algorithm approaches the problem by initialization of $W$ and $H$ as non-negative, and then update the values in $W$ and $H$ until local maximima is obtained and the both matrixes are considered stable. The rules of multiplicative update can be defined as:
 
@@ -110,9 +110,17 @@ W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{WH^{n+1}(H^{n+1})^T}
 
 \subsection{Sparse auto-encoder with non-negativity constraint}
 
-\cite{Vincent}
+Reconstruction of input vector through unsupervised learning. Parametric deterministic mapping \cite{Vincent}
 
+\begin{equation}
+y = f(x) = \mathbf{W}x + \mathbf{b}
+\end{equation}
 
+Where $x$ is the input vector and $\mathbf{W}$ is a mtrix of weights and $\mathbf{b}$ is a bias vector. $y$ is the latent representation that is reconstructed in input space by 
+
+\begin{equation}
+z = g(y) = \mathbf{W'}x + \mathbf{b'}
+\end{equation}
 Primary reference implementation. Describe the constraint and the training architecture
 
 \subsection{Latent-space classification}

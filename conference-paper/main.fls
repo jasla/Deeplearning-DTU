@@ -85,6 +85,9 @@ INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2016/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
 INPUT c:/texlive/2016/texmf-dist/fonts/tfm/adobe/times/ptmbi7t.tfm
 INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
 INPUT figures/raman_sim_3_encode_layer_1_finetune_13.png
 INPUT ./figures/raman_sim_3_encode_layer_1_finetune_13.png
 OUTPUT main.pdf
@@ -145,11 +148,13 @@ INPUT c:/texlive/2016/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT c:/texlive/2016/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT main.aux
 INPUT c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc
+INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 INPUT c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
