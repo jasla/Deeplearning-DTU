@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.4)  18 DEC 2017 16:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.4)  20 DEC 2017 16:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -204,107 +204,6 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 56.
 
-<figures/raman_sim_3_encode_layer_1_finetune_13.png, id=1, 578.16pt x 578.16pt>
-File: figures/raman_sim_3_encode_layer_1_finetune_13.png Graphic file (type png
-)
-<use figures/raman_sim_3_encode_layer_1_finetune_13.png>
-Package pdftex.def Info: figures/raman_sim_3_encode_layer_1_finetune_13.png use
-d on input line 138.
-(pdftex.def)             Requested size: 253.22952pt x 253.22668pt.
-
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 138--139
-[][] 
- []
-
-
-<figures/raman_sim_3_encode_layer_2_finetune_13.png, id=3, 867.24pt x 867.24pt>
-File: figures/raman_sim_3_encode_layer_2_finetune_13.png Graphic file (type png
-)
-<use figures/raman_sim_3_encode_layer_2_finetune_13.png>
-Package pdftex.def Info: figures/raman_sim_3_encode_layer_2_finetune_13.png use
-d on input line 143.
-(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
-
-<figures/raman_sim_3_encode_layer_3_finetune_13.png, id=4, 867.24pt x 867.24pt>
-File: figures/raman_sim_3_encode_layer_3_finetune_13.png Graphic file (type png
-)
-<use figures/raman_sim_3_encode_layer_3_finetune_13.png>
-Package pdftex.def Info: figures/raman_sim_3_encode_layer_3_finetune_13.png use
-d on input line 144.
-(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
-
-<figures/prop_substance_1_im.png, id=5, 867.24pt x 867.24pt>
-File: figures/prop_substance_1_im.png Graphic file (type png)
-
-<use figures/prop_substance_1_im.png>
-Package pdftex.def Info: figures/prop_substance_1_im.png used on input line 149
-.
-(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
-
-<figures/prop_substance_2_im.png, id=6, 867.24pt x 867.24pt>
-File: figures/prop_substance_2_im.png Graphic file (type png)
-
-<use figures/prop_substance_2_im.png>
-Package pdftex.def Info: figures/prop_substance_2_im.png used on input line 150
-.
-(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
-
-<figures/prop_substance_3_im.png, id=7, 867.24pt x 867.24pt>
-File: figures/prop_substance_3_im.png Graphic file (type png)
-
-<use figures/prop_substance_3_im.png>
-Package pdftex.def Info: figures/prop_substance_3_im.png used on input line 151
-.
-(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
-
-<figures/sigmoid_1_im.png, id=8, 867.24pt x 867.24pt>
-File: figures/sigmoid_1_im.png Graphic file (type png)
-
-<use figures/sigmoid_1_im.png>
-Package pdftex.def Info: figures/sigmoid_1_im.png used on input line 157.
-(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
-
-<figures/sigmoid_2_im.png, id=9, 867.24pt x 867.24pt>
-File: figures/sigmoid_2_im.png Graphic file (type png)
-
-<use figures/sigmoid_2_im.png>
-Package pdftex.def Info: figures/sigmoid_2_im.png used on input line 158.
-(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
-
-<figures/sigmoid_3_im.png, id=10, 867.24pt x 867.24pt>
-File: figures/sigmoid_3_im.png Graphic file (type png)
-
-<use figures/sigmoid_3_im.png>
-Package pdftex.def Info: figures/sigmoid_3_im.png used on input line 159.
-(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
-
-<figures/raman_sim_3_conf_matrix13.png, id=11, 867.24pt x 433.62pt>
-File: figures/raman_sim_3_conf_matrix13.png Graphic file (type png)
-
-<use figures/raman_sim_3_conf_matrix13.png>
-Package pdftex.def Info: figures/raman_sim_3_conf_matrix13.png used on input li
-ne 169.
-(pdftex.def)             Requested size: 253.22952pt x 126.61334pt.
-
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 169--170
-[][] 
- []
-
-<figures/DNN_pred_conc_prob.png, id=12, 578.16pt x 578.16pt>
-File: figures/DNN_pred_conc_prob.png Graphic file (type png)
-
-<use figures/DNN_pred_conc_prob.png>
-Package pdftex.def Info: figures/DNN_pred_conc_prob.png used on input line 178.
-
-(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
-
-<figures/nmf_pred_conc.png, id=13, 578.16pt x 578.16pt>
-File: figures/nmf_pred_conc.png Graphic file (type png)
-
-<use figures/nmf_pred_conc.png>
-Package pdftex.def Info: figures/nmf_pred_conc.png used on input line 179.
-(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
-
 Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
@@ -321,36 +220,142 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 
-] [2 <./figures/raman_sim_3_encode_layer_1_finetune_13.png> <./figures/raman_si
-m_3_encode_layer_2_finetune_13.png> <./figures/raman_sim_3_encode_layer_3_finet
-une_13.png> <./figures/prop_substance_1_im.png> <./figures/prop_substance_2_im.
-png> <./figures/prop_substance_3_im.png> <./figures/sigmoid_1_im.png> <./figure
-s/sigmoid_2_im.png> <./figures/sigmoid_3_im.png> <./figures/raman_sim_3_conf_ma
-trix13.png> <./figures/DNN_pred_conc_prob.png> <./figures/nmf_pred_conc.png>] (
-./main.bbl)
-[3
+]
+Underfull \hbox (badness 1735) in paragraph at lines 132--133
+[]\OT1/ptm/m/n/10 architecture draw-ing with stacked train-ing and soft-
+ []
 
-] (./main.aux) ) 
+
+<figures/raman_sim_3_encode_layer_1_finetune_13.png, id=15, 578.16pt x 578.16pt
+>
+File: figures/raman_sim_3_encode_layer_1_finetune_13.png Graphic file (type png
+)
+ <use figures/raman_sim_3_encode_layer_1_finetune_13.png>
+Package pdftex.def Info: figures/raman_sim_3_encode_layer_1_finetune_13.png use
+d on input line 144.
+(pdftex.def)             Requested size: 253.22952pt x 253.22668pt.
+
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 144--145
+[][] 
+ []
+
+
+<figures/raman_sim_3_encode_layer_2_finetune_13.png, id=17, 867.24pt x 867.24pt
+>
+File: figures/raman_sim_3_encode_layer_2_finetune_13.png Graphic file (type png
+)
+ <use figures/raman_sim_3_encode_layer_2_finetune_13.png>
+Package pdftex.def Info: figures/raman_sim_3_encode_layer_2_finetune_13.png use
+d on input line 149.
+(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
+
+<figures/raman_sim_3_encode_layer_3_finetune_13.png, id=18, 867.24pt x 867.24pt
+>
+File: figures/raman_sim_3_encode_layer_3_finetune_13.png Graphic file (type png
+)
+ <use figures/raman_sim_3_encode_layer_3_finetune_13.png>
+Package pdftex.def Info: figures/raman_sim_3_encode_layer_3_finetune_13.png use
+d on input line 150.
+(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
+
+<figures/prop_substance_1_im.png, id=19, 867.24pt x 867.24pt>
+File: figures/prop_substance_1_im.png Graphic file (type png)
+
+<use figures/prop_substance_1_im.png>
+Package pdftex.def Info: figures/prop_substance_1_im.png used on input line 155
+.
+(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
+
+<figures/prop_substance_2_im.png, id=20, 867.24pt x 867.24pt>
+File: figures/prop_substance_2_im.png Graphic file (type png)
+
+<use figures/prop_substance_2_im.png>
+Package pdftex.def Info: figures/prop_substance_2_im.png used on input line 156
+.
+(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
+
+<figures/prop_substance_3_im.png, id=21, 867.24pt x 867.24pt>
+File: figures/prop_substance_3_im.png Graphic file (type png)
+
+<use figures/prop_substance_3_im.png>
+Package pdftex.def Info: figures/prop_substance_3_im.png used on input line 157
+.
+(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
+
+<figures/sigmoid_1_im.png, id=22, 867.24pt x 867.24pt>
+File: figures/sigmoid_1_im.png Graphic file (type png)
+
+<use figures/sigmoid_1_im.png>
+Package pdftex.def Info: figures/sigmoid_1_im.png used on input line 163.
+(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
+
+<figures/sigmoid_2_im.png, id=23, 867.24pt x 867.24pt>
+File: figures/sigmoid_2_im.png Graphic file (type png)
+
+<use figures/sigmoid_2_im.png>
+Package pdftex.def Info: figures/sigmoid_2_im.png used on input line 164.
+(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
+
+<figures/sigmoid_3_im.png, id=24, 867.24pt x 867.24pt>
+File: figures/sigmoid_3_im.png Graphic file (type png)
+
+<use figures/sigmoid_3_im.png>
+Package pdftex.def Info: figures/sigmoid_3_im.png used on input line 165.
+(pdftex.def)             Requested size: 73.40884pt x 73.40344pt.
+
+<figures/raman_sim_3_conf_matrix13.png, id=25, 867.24pt x 433.62pt>
+File: figures/raman_sim_3_conf_matrix13.png Graphic file (type png)
+
+<use figures/raman_sim_3_conf_matrix13.png>
+Package pdftex.def Info: figures/raman_sim_3_conf_matrix13.png used on input li
+ne 175.
+(pdftex.def)             Requested size: 253.22952pt x 126.61334pt.
+
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 175--176
+[][] 
+ []
+
+<figures/DNN_pred_conc_prob.png, id=26, 578.16pt x 578.16pt>
+File: figures/DNN_pred_conc_prob.png Graphic file (type png)
+
+<use figures/DNN_pred_conc_prob.png>
+Package pdftex.def Info: figures/DNN_pred_conc_prob.png used on input line 184.
+
+(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
+
+<figures/nmf_pred_conc.png, id=27, 578.16pt x 578.16pt>
+File: figures/nmf_pred_conc.png Graphic file (type png)
+
+<use figures/nmf_pred_conc.png>
+Package pdftex.def Info: figures/nmf_pred_conc.png used on input line 185.
+(pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
+ [2 <./figures/raman_sim_3_encode_layer_1_finetune_13.png> <./figures/raman_sim
+_3_encode_layer_2_finetune_13.png> <./figures/raman_sim_3_encode_layer_3_finetu
+ne_13.png> <./figures/prop_substance_1_im.png> <./figures/prop_substance_2_im.p
+ng> <./figures/prop_substance_3_im.png> <./figures/sigmoid_1_im.png> <./figures
+/sigmoid_2_im.png> <./figures/sigmoid_3_im.png>] (./main.bbl) [3 <./figures/ram
+an_sim_3_conf_matrix13.png> <./figures/DNN_pred_conc_prob.png> <./figures/nmf_p
+red_conc.png>] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 2259 strings out of 493013
- 31533 string characters out of 6136994
- 96898 words of memory out of 5000000
- 5758 multiletter control sequences out of 15000+600000
+ 2262 strings out of 493013
+ 31568 string characters out of 6136994
+ 96912 words of memory out of 5000000
+ 5761 multiletter control sequences out of 15000+600000
  21942 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,10n,25p,553b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2016/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/20
-16/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2016/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on main.pdf (3 pages, 559782 bytes).
+ 39i,10n,25p,780b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8
+r.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
+c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2016/t
+exmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2016/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on main.pdf (3 pages, 561894 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream

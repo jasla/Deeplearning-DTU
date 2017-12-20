@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{Wei2013}
+Hong Wei and Hongxing Xu,
+\newblock ``{Hot spots in different metal nanostructures for plasmon-enhanced
+  Raman spectroscopy},''
+\newblock {\em Nanoscale}, vol. 5, no. 22, pp. 10794, oct 2013.
+
 \bibitem{Hosseini-Asl2016}
 Ehsan Hosseini-Asl, Jacek~M. Zurada, and Olfa Nasraoui,
 \newblock ``{Deep Learning of Part-Based Representation of Data Using Sparse
@@ -17,6 +23,12 @@ H.~Sebastian Seung and Daniel~D. Lee,
 A.~P. Dempster, N.~M. Laird, and D.~B. Rubin,
 \newblock ``{Maximum Likelihood from Incomplete Data via the EM Algorithm},''
   1977.
+
+\bibitem{Langville2014}
+Amy~N. Langville, Carl~D. Meyer, Russell Albright, James Cox, and David Duling,
+\newblock ``{Algorithms, Initializations, and Convergence for the Nonnegative
+  Matrix Factorization},''
+\newblock jul 2014.
 
 \bibitem{Vincent}
 Pascal Vincent, Hugo Larochelle, Yoshua Bengio, and Pierre-Antoine Manzagol,

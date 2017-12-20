@@ -60,9 +60,11 @@ One, two, three, four, five
 \section{Introduction}
 \label{sec:intro}
 
-Surface-enhanced Raman scattering (SERS)
+Raman scattering is a technique used to detect and identify molecules using the interaction of photons. It is a technique that is commonly used in chemistry and physics for detecting molecules by observing their vibrational and rotational modes. This is completed with the use of laser light. The photon excites the sample which causes scattering, meaning the photon has a change in energy over a short time period. This energy-change is reflected as a shift in frequency, also called a stokes shift, and by analysing the spectrum the molecules and combination of molecules can be identified. 
 
-Hotspots, complex mixture in raman spectra. 
+Surface-enhanced Raman Scattering (SERS) is an enhancement of Raman Scattering, that uses surfaces such as metal or nanostructures to absorb molecules. This enables the identification of single molecules.  For instance, noble metal nanostructures can concentrate light which greatly enhances the electromagnetic field near the nanostructure. These areas become so called "hot spots" that amplify weak Raman scattering signals which may not have been possible to detect with regular Raman scattering. The placement and design of these nanostructers with high SERS preformance is beyond the scope of this work, however additional information can be found in \cite{Wei2013} and references herein.
+
+Complex mixtures in spectra.
 
 NMF/MCR for source seperation and mixture classification.
 
@@ -80,10 +82,7 @@ Primary reference \cite{Hosseini-Asl2016}
 \section{Methods}
 \label{sec:methods}
 
-Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
-
-Compare with NMF?
-
+This work seeks to compare traditional and proven methods for SERS analysis, i.e. curve resolution, such as NMF to denoising autoencoders with non-negativity constraints. 
 \textbf{Add how NMF/MCR is used in raman spectroscopy.}
 
 \subsection{Non-negative matrix factorization}
@@ -95,9 +94,9 @@ Non-negative matrix factorization (NMF) consists of factorizing a original matri
 V \approx W \times H
 \end{equation}
 
-Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship with the columns of $V$. So for instance, a matrix V of size $n \times m$ can be factorized into a matrix $W$ of size $n \times k$ and a matrix $H$ of size $k \times m$, where $k$ is the number of components. Completing the intuitive point of view, $W$ and $W$ can be seen as components that combined approximate the original signal $V$.
+Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship with the columns of $V$. So for instance, a matrix V of size $n \times m$ can be factorized into a matrix $W$ of size $n \times k$ and a matrix $H$ of size $k \times m$, where $k$ is the number of components. Approaching the intuitive point of view, $W$ and $H$ can be seen as components that combined approximate the original signal $V$.
 
-An iterative algorithm is considered for NMF, which shares similar monotonic convergence as the EM algorithm. \cite{Dempster1977}. Moreover, the rules of update preserve non-negativity of $W$ and $H$. The algorithm approaches the problem by initialization of $W$ and $H$ as non-negative, and then update the values in $W$ and $H$ until local maximima is obtained and the both matrixes are considered stable. The rules of multiplicative update can be defined as:
+An iterative algorithm is considered for NMF, which shares similar monotonic convergence as the EM algorithm. \cite{Dempster1977}. Moreover, the rules of update preserve non-negativity of $W$ and $H$. The algorithm approaches the problem by initialization of $W$ and $H$ as non-negative, and then update the values in $W$ and $H$ until local maximima is obtained and both matrixes are considered stable. The rules of multiplicative update can be defined as:
 
 \begin{equation}
 H^{n+1} \leftarrow H^{n} \frac{(W^n)^TV}{(W^n)^TW^nH^n}
@@ -107,6 +106,7 @@ and
 W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{WH^{n+1}(H^{n+1})^T}
 \end{equation}
 
+This however leads to an optimization that is convex for $W$ and $H$ which can require many iterations and poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while solving for $W$, and 2) keeping $W$ fixed while solving for $H$. Further details can be found in  \cite{Langville2014} and references herein. This is, for the remainder for this work, defined as NMF-ALS.
 
 \subsection{Sparse auto-encoder with non-negativity constraint}
 
@@ -123,9 +123,15 @@ z = g(y) = \mathbf{W'}x + \mathbf{b'}
 \end{equation}
 Primary reference implementation. Describe the constraint and the training architecture
 
-\subsection{Latent-space classification}
+\section{Setup}
+\label{sec:setup}
 
-classification based on latent-space by compression of sparse autoencoders.
+
+Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
+
+architecture drawing with stacked training and softmax/sigmoid layer.
+
+MNIST verification
 
 \section{Results}
 \label{sec:results}
