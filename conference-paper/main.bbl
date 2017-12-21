@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+
+\bibitem{Wei2013}
+Hong Wei and Hongxing Xu,
+\newblock ``{Hot spots in different metal nanostructures for plasmon-enhanced
+  Raman spectroscopy},''
+\newblock {\em Nanoscale}, vol. 5, no. 22, pp. 10794, oct 2013.
+
+\bibitem{Hosseini-Asl2016}
+Ehsan Hosseini-Asl, Jacek~M. Zurada, and Olfa Nasraoui,
+\newblock ``{Deep Learning of Part-Based Representation of Data Using Sparse
+  Autoencoders With Nonnegativity Constraints},''
+\newblock {\em IEEE Transactions on Neural Networks and Learning Systems}, vol.
+  27, no. 12, pp. 2486--2498, dec 2016.
+
+\bibitem{Seung1999}
+H.~Sebastian Seung and Daniel~D. Lee,
+\newblock ``{Learning the parts of objects by non-negative matrix
+  factorization},''
+\newblock {\em Nature}, vol. 401, no. 6755, pp. 788--791, oct 1999.
+
+\bibitem{Dempster1977}
+A.~P. Dempster, N.~M. Laird, and D.~B. Rubin,
+\newblock ``{Maximum Likelihood from Incomplete Data via the EM Algorithm},''
+  1977.
+
+\bibitem{Langville2014}
+Amy~N. Langville, Carl~D. Meyer, Russell Albright, James Cox, and David Duling,
+\newblock ``{Algorithms, Initializations, and Convergence for the Nonnegative
+  Matrix Factorization},''
+\newblock jul 2014.
+
+\bibitem{Vincent}
+Pascal Vincent, Hugo Larochelle, Yoshua Bengio, and Pierre-Antoine Manzagol,
+\newblock ``{Extracting and Composing Robust Features with Denoising
+  Autoencoders},''
+\newblock .
+
+\end{thebibliography}
