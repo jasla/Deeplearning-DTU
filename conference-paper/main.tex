@@ -142,19 +142,18 @@ Primary reference \cite{Hosseini-Asl2016}
 \section{Setup}
 \label{sec:setup}
 
-
 Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
 
 architecture drawing with stacked training and softmax/sigmoid layer.
 
 MNIST verification
 
-Add some plots from the new set of plots that Jacob made.
+Add a reference with the parameters used for both models from the paper. The sparsity is different.
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\linewidth]{figures_3/latent_space_finetune_no_legend.png}  
-	\caption{Hot spots}
+	\caption{MNIST latent space after finetuning}
 \end{figure}
 
 
@@ -180,13 +179,21 @@ Add some plots from the new set of plots that Jacob made.
 
 \section{Results}
 \label{sec:results}
-
-Training and test data. 
-
-Encodings and basis vectors
+This section contains the main results of the deep learning model described in the setup section ~\ref{sec:setup}.
+As described before, the model is a classification model with three classes. One of the classes is used for collecting the background signal. The first indication that the model functions correctly is the component indentification. As it can be visualized in figure ~\ref{fig:components} the components look very similar to the one described in the setup section ~\ref{sec:setup}.
 
 \begin{figure}[!h]
-  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_encode_layer_1_finetune_13.png}
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_encode_layer_1_finetune_13.png}
+	\caption{Component identification}
+	\label{fig:components}
+\end{figure}
+
+Encodings and basis vectors
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures_3/DNN_D_vs_prob_6.png}
+	\caption{Component identification}
 \end{figure}
 
 \begin{figure}[!h]
@@ -195,30 +202,35 @@ Encodings and basis vectors
 
 
 \begin{figure}[!h]
-  \includegraphics[width=1\linewidth]{figures_2/DNN_prop_im.png}
+  \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
 \end{figure}
 
-\begin{figure}[!h]
-  \includegraphics[width=1\linewidth]{figures_2/DNN_sigmoid_im.png}  
-\end{figure}
 
 Classifier results
 
 
 \begin{figure}
-  
   \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
-
 \end{figure}
+
+\begin{figure}
+	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
+\end{figure}
+
+
+
+\begin{figure}
+	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
+	\includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
+\end{figure}
+
+The difference between these results is described into depth in the discussion section. ~\ref{sec:discussion}
 
 \section{Discussion}
 \label{sec:discussion}
 
 
-\begin{figure}
-  \includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
-  \includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
-\end{figure}
+
 
 Comparison with NMF - main discussion here.
 
