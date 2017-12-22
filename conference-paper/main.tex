@@ -173,6 +173,7 @@ Add a reference with the parameters used for both models from the paper. The spa
 	\centering
 	\includegraphics[width=1\linewidth]{figures_3/raman_sim_training_data_2.png}  
 	\caption{Raman simulation data}
+	\label{fig:raman}
 \end{figure}
 
 
@@ -180,8 +181,11 @@ Add a reference with the parameters used for both models from the paper. The spa
 \section{Results}
 \label{sec:results}
 This section contains the main results of the deep learning model described in the setup section ~\ref{sec:setup} for the simulated raman data set.
-As described before, the model is a classification model with three classes. One of the classes is used for collecting the background signal.\\ In order to check that indeed the model works as expected, several images have been generated. These images are presented below with a small description.\\ 
-The first indication that the model functions correctly is the component indentification. As it can be visualized in figure ~\ref{fig:components} the components look very similar to the ones described in the setup section ~\ref{sec:setup}.\\
+As described before, the model is a classification model with three classes. One of the classes is used for collecting the background signal.
+
+In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.
+
+The first indication that the model functions correctly is the component indentification. As it can be visualized in figure ~\ref{fig:components} the components look very similar to the ones described in the Setup Section ~\ref{sec:setup}, figure ~\ref{fig:raman}.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
@@ -199,7 +203,7 @@ An overall overview of the activations over the D space can be viewed in figure 
   \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
     \label{fig:activations}
 \end{figure}
-Along the way, we also plotted a running average to check that indeed the probabilities for class 0, class 1 and class2 (blue, purple and green lines) over space D behave as expected. As one can see in ~\ref{fig:Dspace}, the behaviour is consistent with figure ~\ref{fig:activations}.
+Along the way, we also plotted a running average to check that indeed the probabilities for class 0, class 1 and class 2 (blue, purple and green solid lines) over space D behave as expected. As one can see in ~\ref{fig:Dspace}, the behaviour is consistent with figure ~\ref{fig:activations}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
