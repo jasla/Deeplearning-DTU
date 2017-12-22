@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.4.11)  21 DEC 2017 18:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.4.11)  22 DEC 2017 14:30
 entering extended mode
 **./main.tex
 (main.tex
@@ -325,95 +325,147 @@ Underfull \hbox (badness 1735) in paragraph at lines 148--149
  []
 
 
-<figures_2/raman_sim_3_encode_layer_1_finetune_13.png, id=76, 578.16pt x 289.08
+<figures_3/latent_space_finetune_no_legend.png, id=76, 433.62pt x 227.04825pt>
+File: figures_3/latent_space_finetune_no_legend.png Graphic file (type png)
+
+<use figures_3/latent_space_finetune_no_legend.png>
+Package pdftex.def Info: figures_3/latent_space_finetune_no_legend.png used on 
+input line 156.
+(pdftex.def)             Requested size: 244.6937pt x 128.12659pt.
+
+<figures_3/Confusion_matrix_fine_tune.png, id=78, 867.24pt x 433.62pt>
+File: figures_3/Confusion_matrix_fine_tune.png Graphic file (type png)
+
+<use figures_3/Confusion_matrix_fine_tune.png>
+Package pdftex.def Info: figures_3/Confusion_matrix_fine_tune.png used on input
+ line 162.
+(pdftex.def)             Requested size: 244.6937pt x 122.34569pt.
+
+<figures_3/raman_sim_hotspots.png, id=79, 296.90926pt x 251.7405pt>
+File: figures_3/raman_sim_hotspots.png Graphic file (type png)
+
+<use figures_3/raman_sim_hotspots.png>
+Package pdftex.def Info: figures_3/raman_sim_hotspots.png used on input line 16
+8.
+(pdftex.def)             Requested size: 122.34685pt x 103.73283pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figures_3/raman_sim_training_data_2.png, id=80, 442.65375pt x 281.25075pt>
+File: figures_3/raman_sim_training_data_2.png Graphic file (type png)
+
+<use figures_3/raman_sim_training_data_2.png>
+Package pdftex.def Info: figures_3/raman_sim_training_data_2.png used on input 
+line 175.
+(pdftex.def)             Requested size: 244.6937pt x 155.47372pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<figures_2/raman_sim_3_encode_layer_1_finetune_13.png, id=81, 578.16pt x 289.08
 pt>
 File: figures_2/raman_sim_3_encode_layer_1_finetune_13.png Graphic file (type p
 ng)
  <use figures_2/raman_sim_3_encode_layer_1_finetune_13.png>
 Package pdftex.def Info: figures_2/raman_sim_3_encode_layer_1_finetune_13.png u
-sed on input line 160.
+sed on input line 189.
 (pdftex.def)             Requested size: 253.22952pt x 126.61333pt.
 
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 160--161
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 189--190
 [][] 
  []
 
-<figures_2/raman_sim_second_softmax_encode.png, id=78, 867.24pt x 433.62pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figures_2/raman_sim_second_softmax_encode.png, id=82, 867.24pt x 433.62pt>
 File: figures_2/raman_sim_second_softmax_encode.png Graphic file (type png)
 
 <use figures_2/raman_sim_second_softmax_encode.png>
 Package pdftex.def Info: figures_2/raman_sim_second_softmax_encode.png used on 
-input line 165.
+input line 193.
 (pdftex.def)             Requested size: 253.22952pt x 126.61334pt.
 
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 165--166
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 193--194
 [][] 
  []
 
-<figures_2/DNN_prop_im.png, id=79, 867.24pt x 867.24pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figures_2/DNN_prop_im.png, id=83, 867.24pt x 867.24pt>
 File: figures_2/DNN_prop_im.png Graphic file (type png)
 
 <use figures_2/DNN_prop_im.png>
-Package pdftex.def Info: figures_2/DNN_prop_im.png used on input line 170.
+Package pdftex.def Info: figures_2/DNN_prop_im.png used on input line 198.
 (pdftex.def)             Requested size: 244.6937pt x 244.6914pt.
 
-<figures_2/DNN_sigmoid_im.png, id=80, 867.24pt x 867.24pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figures_2/DNN_sigmoid_im.png, id=84, 867.24pt x 867.24pt>
 File: figures_2/DNN_sigmoid_im.png Graphic file (type png)
 
 <use figures_2/DNN_sigmoid_im.png>
-Package pdftex.def Info: figures_2/DNN_sigmoid_im.png used on input line 174.
+Package pdftex.def Info: figures_2/DNN_sigmoid_im.png used on input line 202.
 (pdftex.def)             Requested size: 244.6937pt x 244.6914pt.
 
-<figures_2/raman_sim_3_conf_matrix13.png, id=81, 867.24pt x 433.62pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figures_2/raman_sim_3_conf_matrix13.png, id=85, 867.24pt x 433.62pt>
 File: figures_2/raman_sim_3_conf_matrix13.png Graphic file (type png)
 
 <use figures_2/raman_sim_3_conf_matrix13.png>
 Package pdftex.def Info: figures_2/raman_sim_3_conf_matrix13.png used on input 
-line 182.
+line 210.
 (pdftex.def)             Requested size: 253.22952pt x 126.61334pt.
 
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 182--183
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 210--211
 [][] 
  []
 
-<figures_2/DNN_pred_conc_prob.png, id=82, 578.16pt x 578.16pt>
+<figures_2/DNN_pred_conc_prob.png, id=86, 578.16pt x 578.16pt>
 File: figures_2/DNN_pred_conc_prob.png Graphic file (type png)
 
 <use figures_2/DNN_pred_conc_prob.png>
-Package pdftex.def Info: figures_2/DNN_pred_conc_prob.png used on input line 19
-1.
+Package pdftex.def Info: figures_2/DNN_pred_conc_prob.png used on input line 21
+9.
 (pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
 
-<figures_2/nmf_pred_conc.png, id=83, 578.16pt x 578.16pt>
+<figures_2/nmf_pred_conc.png, id=87, 578.16pt x 578.16pt>
 File: figures_2/nmf_pred_conc.png Graphic file (type png)
 
 <use figures_2/nmf_pred_conc.png>
-Package pdftex.def Info: figures_2/nmf_pred_conc.png used on input line 192.
+Package pdftex.def Info: figures_2/nmf_pred_conc.png used on input line 220.
 (pdftex.def)             Requested size: 116.48341pt x 116.47685pt.
- [2 <./figures_2/raman_sim_3_encode_layer_1_finetune_13.png> <./figures_2/raman
-_sim_second_softmax_encode.png>] [3 <./figures_2/DNN_prop_im.png> <./figures_2/
-DNN_sigmoid_im.png> <./figures_2/raman_sim_3_conf_matrix13.png> <./figures_2/DN
-N_pred_conc_prob.png> <./figures_2/nmf_pred_conc.png>] (main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
- [4
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
+ [2 <./figures_3/latent_space_finetune_no_legend.png> <./figures_3/Confusion_ma
+trix_fine_tune.png>] [3 <./figures_3/raman_sim_hotspots.png> <./figures_3/raman
+_sim_training_data_2.png> <./figures_2/raman_sim_3_encode_layer_1_finetune_13.p
+ng> <./figures_2/raman_sim_second_softmax_encode.png> <./figures_2/DNN_prop_im.
+png> <./figures_2/DNN_sigmoid_im.png>]
+(main.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
+ [4 <./figures_2/raman_sim_3_conf_matrix13.png> <./figures_2/DNN_pred_conc_prob
+.png> <./figures_2/nmf_pred_conc.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 253.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 253.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 9EDFBB614687DBCFA0D515ABEB074C39;586.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 253.
  ) 
 Here is how much of TeX's memory you used:
- 5825 strings out of 493334
- 85020 string characters out of 3136675
+ 5852 strings out of 493334
+ 85895 string characters out of 3136675
  178609 words of memory out of 3000000
- 9267 multiletter control sequences out of 15000+200000
+ 9285 multiletter control sequences out of 15000+200000
  21942 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,10n,29p,876b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,10n,29p,876b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
@@ -427,9 +479,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX
 ype1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on main.pdf (4 pages, 449179 bytes).
+Output written on main.pdf (4 pages, 654399 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 124 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 176 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
+ 144 words of extra memory for PDF output out of 10000 (max. 10000000)
 
