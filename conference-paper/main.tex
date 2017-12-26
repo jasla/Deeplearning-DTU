@@ -185,7 +185,7 @@ As described before, the model is a classification model with three classes. One
 
 In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.
 
-The first indication that the model functions correctly is the component indentification. As it can be visualized in figure ~\ref{fig:components} the components look very similar to the ones described in the Setup Section ~\ref{sec:setup}, figure ~\ref{fig:raman}.\\
+The first indication that the model functions correctly is the component indentification. In terms of peaks and wave numbers the components in figure ~\ref{fig:components} look very similar to the ones described in the Setup Section ~\ref{sec:setup}, figure ~\ref{fig:raman}.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
@@ -201,6 +201,7 @@ The weights for the second layer and softmax layer can be visualized in figure ~
 An overall overview of the activations over the D space can be viewed in figure ~\ref{fig:activations}. As it can be observed, the hot spots are activated in both images similarly to the original hot spot simulation image. Therefore, one might say that the model performs as expected.
 \begin{figure}[!h]
   \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
+  \caption{Activations}
     \label{fig:activations}
 \end{figure}
 Along the way, we also plotted a running average to check that indeed the probabilities for class 0, class 1 and class 2 (blue, purple and green solid lines) over space D behave as expected. As one can see in ~\ref{fig:Dspace}, the behaviour is consistent with figure ~\ref{fig:activations}.
