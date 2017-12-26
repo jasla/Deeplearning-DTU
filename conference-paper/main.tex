@@ -166,6 +166,7 @@ Add a reference with the parameters used for both models from the paper. The spa
     \centering
 	\includegraphics[width=0.5\linewidth]{figures_3/raman_sim_hotspots.png}  
 	\caption{Hot spots}
+	\label{fig:hotspots}
 \end{figure}
 
 
@@ -190,40 +191,40 @@ The first indication that the model functions correctly is the component indenti
 	\caption{Component identification}
 	\label{fig:components}
 \end{figure}
-The weights for the second layer and softmax layer can be visualized in figure ~\ref{fig:weights}. What is interesting to observe is that weight 0 for class 0 is highly activated in both layers.\\ 
+The weights for the second layer and softmax layer can be visualized in figure ~\ref{fig:weights}. What is interesting to observe is that weight 0 for class 0 is highly activated in both layers.WHAT SHOULD WE SAY HERE EXACTLY?\\ 
 \begin{figure}[H]
   \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_second_softmax_encode.png}
   \caption{Weights for the second and softmax layers}
   \label{fig:weights}
 \end{figure}
-An overall overview of the activations over the D space can be viewed in figure ~\ref{fig:activations}. As it can be observed, the hot spots are activated in both images similarly to the original hot spot simulation image. Therefore, one might say that the model performs as expected.
+An overall overview of the activations over the D space can be viewed in figure ~\ref{fig:activations}. As it can be observed, the hot spots are activated (lighter tones) in both images similarly to the original hot spot simulation image, figure ~\ref{fig:hotspots}. Class 1 and class 2 represent the two substances while class 3 represents the background. Therefore, one might say that the model performs as expected. HOW TO EXPLAIN THE SIGMOID?
 \begin{figure}[H]
   \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
   \caption{Activations}
     \label{fig:activations}
 \end{figure}
-Along the way, we also plotted a running average to check that indeed the probabilities for class 0, class 1 and class 2 (blue, purple and green solid lines) over space D behave as expected. As one can see in ~\ref{fig:Dspace}, the behaviour is consistent with figure ~\ref{fig:activations}.
+Along the way, we also plotted a running average to check that indeed the probabilities for class 1, class 2 and class 3 (blue, green and purple solid lines) over space D behave as expected. As one can see in ~\ref{fig:Dspace}, the behaviour is consistent with figure ~\ref{fig:activations}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
 	\caption{Probability versus D space for a concentration of 0.7}
 	\label{fig:Dspace}
 \end{figure}
-We also plotted the confusion matrix for classification, figure ~\ref{fig:confusion}. The value of 0.81 for the background signal class (class 2) indicates that further tuning of parameteres needs to be done. The higher the classification percentage of the background signal, the better the model will identify correctly the two substances.
+We also plotted the confusion matrix for classification, figure ~\ref{fig:confusion}. The value of 0.81 for the background signal class (class 2) indicates that further tuning of parameteres needs to be done. The higher the classification percentage of the background signal, the better the model will identify correctly the two substances. PROBLEM: THE CLASS LABELS CHANGE THROUGHOUT THE FIGURES. SOMETIMES, 1,2,3 OTHERS 0,1,2 + HARD TO SEE WHICH IS WHICH.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
   \caption{Confuson matrix for the raman data}
   \label{fig:confusion}
 \end{figure}
-In order to check how the model deals with the concentrations, we also made a predicted concentration using sigmoids, figure ~\ref{fig:conc_sigmoids}. As the figure shows, the model performs quite poorly since the intersection should be close to the gray diagonals.
+In order to check how the model deals with the concentrations, we also made a predicted concentration using sigmoids graph, figure ~\ref{fig:conc_sigmoids}. As the figure shows, the model performs quite poorly since the intersection should be close to the gray diagonals. WEIRD SPACING, TRIED SOME THINGS BUT IT DOESN'T WORK.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.26\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
 	\caption{Predicted concentration using sigmoids}
 	\label{fig:conc_sigmoids}
 \end{figure}
-Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, ~\ref{fig:comparison}. As it can be visualized in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the discussion section ~\ref{sec:discussion}.
+Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, figure ~\ref{fig:comparison}. As it can be visualized in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the discussion section ~\ref{sec:discussion}.
 \begin{figure}[H]
 	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
 	\includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
