@@ -3,9 +3,9 @@
 %          IEEEbib.bst - IEEE bibliography style file.
 % --------------------------------------------------------------------------
 \documentclass{article}
-\usepackage{amsmath,graphicx,02460, hyperref}
-
-
+\usepackage{amsmath,graphicx,02460, hyperref,float}
+\usepackage[font=small,skip=1pt]{caption} %for the weird space betwween the caption and figures
+\setlength\belowcaptionskip{-2ex} %for the weird space between the text and figures
 
 \toappear{02456 Deep Learning, DTU Compute, Fall 2017}
 
@@ -150,26 +150,26 @@ MNIST verification
 
 Add a reference with the parameters used for both models from the paper. The sparsity is different.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{figures_3/latent_space_finetune_no_legend.png}  
 	\caption{MNIST latent space after finetuning}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\includegraphics[width=1\linewidth]{figures_3/Confusion_matrix_fine_tune.png}  
 	\caption{MNIST confusion matrix}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[H]
     \centering
 	\includegraphics[width=0.5\linewidth]{figures_3/raman_sim_hotspots.png}  
 	\caption{Hot spots}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{figures_3/raman_sim_training_data_2.png}  
 	\caption{Raman simulation data}
@@ -180,65 +180,56 @@ Add a reference with the parameters used for both models from the paper. The spa
 
 \section{Results}
 \label{sec:results}
-This section contains the main results of the deep learning model described in the setup section ~\ref{sec:setup} for the simulated raman data set.
-As described before, the model is a classification model with three classes. One of the classes is used for collecting the background signal.
-
-In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.
-
-The first indication that the model functions correctly is the component indentification. In terms of peaks and wave numbers the components in figure ~\ref{fig:components} look very similar to the ones described in the Setup Section ~\ref{sec:setup}, figure ~\ref{fig:raman}.\\
-\begin{figure}[!h]
+This section contains the main results of the deep learning model described in the setup section ~\ref{sec:setup} for the simulated raman data set.\\
+As described before, the model is a classification model with three classes. One of the classes is used for collecting the background signal.\\
+In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.\\
+The first indication that the model functions correctly is the component indentification. In terms of peaks and wave numbers the components in figure ~\ref{fig:components} look very similar to the ones described in the Setup Section ~\ref{sec:setup}, figure ~\ref{fig:raman}.
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
 	\caption{Component identification}
 	\label{fig:components}
 \end{figure}
 The weights for the second layer and softmax layer can be visualized in figure ~\ref{fig:weights}. What is interesting to observe is that weight 0 for class 0 is highly activated in both layers.\\ 
-\begin{figure}[!h]
+\begin{figure}[H]
   \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_second_softmax_encode.png}
   \caption{Weights for the second and softmax layers}
   \label{fig:weights}
 \end{figure}
 An overall overview of the activations over the D space can be viewed in figure ~\ref{fig:activations}. As it can be observed, the hot spots are activated in both images similarly to the original hot spot simulation image. Therefore, one might say that the model performs as expected.
-\begin{figure}[!h]
+\begin{figure}[H]
   \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
   \caption{Activations}
     \label{fig:activations}
 \end{figure}
 Along the way, we also plotted a running average to check that indeed the probabilities for class 0, class 1 and class 2 (blue, purple and green solid lines) over space D behave as expected. As one can see in ~\ref{fig:Dspace}, the behaviour is consistent with figure ~\ref{fig:activations}.
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
 	\caption{Probability versus D space for a concentration of 0.7}
 	\label{fig:Dspace}
 \end{figure}
-
 We also plotted the confusion matrix for classification, figure ~\ref{fig:confusion}. The value of 0.81 for the background signal class (class 2) indicates that further tuning of parameteres needs to be done. The higher the classification percentage of the background signal, the better the model will identify correctly the two substances.
-
-\begin{figure}[!h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
   \caption{Confuson matrix for the raman data}
   \label{fig:confusion}
 \end{figure}
-
 In order to check how the model deals with the concentrations, we also made a predicted concentration using sigmoids, figure ~\ref{fig:conc_sigmoids}. As the figure shows, the model performs quite poorly since the intersection should be close to the gray diagonals.
-
-\begin{figure}[!h]
-	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.26\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
 	\caption{Predicted concentration using sigmoids}
 	\label{fig:conc_sigmoids}
 \end{figure}
-
 Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, ~\ref{fig:comparison}. As it can be visualized in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the discussion section ~\ref{sec:discussion}.
-
-\begin{figure}[!h]
+\begin{figure}[H]
 	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
 	\includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
 	\caption{Predicted concentration using probabilities and NMF}
 	\label{fig:comparison}
 \end{figure}
-
-
 \section{Discussion}
 \label{sec:discussion}
 
