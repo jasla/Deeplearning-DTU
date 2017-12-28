@@ -303,8 +303,8 @@ cax = plt.imshow(canvas,cmap = 'gray')
 cbar = plt.colorbar(cax)
 
 #%% Confusion matrices  
-cnf_valid = confusion_matrix(preds_valid,targets_valid); cnf_valid = cnf_valid.astype('float') / cnf_valid.sum(axis=1)[:, np.newaxis]
-cnf_test = confusion_matrix(preds_test,targets_test); cnf_test = cnf_test.astype('float') / cnf_test.sum(axis=1)[:, np.newaxis]
+cnf_valid = confusion_matrix(targets_valid,preds_valid); cnf_valid = cnf_valid.astype('float') / cnf_valid.sum(axis=1)[:, np.newaxis]
+cnf_test = confusion_matrix(targets_test,preds_test); cnf_test = cnf_test.astype('float') / cnf_test.sum(axis=1)[:, np.newaxis]
 
 plt.figure(figsize=(12,6))
 plt.subplot(1,2,1)

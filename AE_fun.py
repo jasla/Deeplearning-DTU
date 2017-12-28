@@ -474,7 +474,7 @@ def make_hidden(input_pl, hidden_num,activation_fun,param,layer_name):
     """
     Helper function for creating the hidden layers in 
     """
-  return layers.dense(inputs=input_pl, units=hidden_num, 
+    return layers.dense(inputs=input_pl, units=hidden_num, 
                        activation = activation_fun,
                              kernel_initializer=tf.constant_initializer(param[0],dtype=tf.float32),
                              bias_initializer=tf.constant_initializer(param[1], dtype=tf.float32),
