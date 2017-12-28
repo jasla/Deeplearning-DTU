@@ -362,9 +362,9 @@ plt.legend(["Component " + str(i) for i in range(hiddenSizeL1)])
 plt.xlabel("Wavenumber")
 
 #%% Second and Softmax layer
-xticks = ["Weight " + str(i) for i in range(hiddenSizeL1)]
+xticks = ["Comp. " + str(i) for i in range(hiddenSizeL1)]
 xticks += ["Bias"]
-yticks = ["Out " + str(i) for i in range(hiddenSizeL2)]
+yticks = ["Unit " + str(i) for i in range(hiddenSizeL2)]
 canvas = np.zeros(shape = (hiddenSizeL1+1,hiddenSizeL2))
 canvas[:-1,:] = param_4[2]
 canvas[-1,:] = param_4[3]
@@ -381,7 +381,7 @@ ax = plt.imshow(canvas.T,cmap = "gray",aspect = "auto",vmin = min(vals),vmax = m
 plt.xticks(np.arange(hiddenSizeL1+1),xticks,fontsize = 13)
 plt.yticks(np.arange(hiddenSizeL2)-.25,yticks,fontsize = 13,rotation = 90)
 
-xticks_soft = ["Weight " + str(i) for i in range(hiddenSizeL2)]
+xticks_soft = ["Unit " + str(i) for i in range(hiddenSizeL2)]
 xticks_soft += ["Bias"]
 yticks_soft = ["Class " + str(i) for i in range(num_classes)]
 
@@ -517,7 +517,7 @@ for j in range(3):
 plt.figure(figsize=(12,12))
 plt.imshow(canvas,cmap="gray",aspect = "auto")
 plt.xticks(np.arange(8)*25+12.5,[str(C[I[i],0]) for i in range(8)],fontsize = 20)
-plt.yticks(np.arange(3)*100+50,["Class "+str(i+1) for i in range(3)],rotation = 90,fontsize = 20)
+plt.yticks(np.arange(3)*100+50,["Class "+str(i) for i in range(3)],rotation = 90,fontsize = 20)
 
 
 #%% Image of activations
@@ -530,4 +530,4 @@ for j in range(3):
 plt.figure(figsize=(12,12))
 plt.imshow(canvas,cmap="gray",aspect = "auto")
 plt.xticks(np.arange(8)*25+12.5,[str(C[I[i],0]) for i in range(8)],fontsize = 20)
-plt.yticks(np.arange(3)*100+50,["Class "+str(i+1) for i in range(3)],rotation = 90,fontsize = 20)
+plt.yticks(np.arange(3)*100+50,["Unit "+str(i) for i in range(3)],rotation = 90,fontsize = 20)
