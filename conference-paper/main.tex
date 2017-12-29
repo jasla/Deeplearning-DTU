@@ -100,7 +100,7 @@ and
 W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{WH^{n+1}(H^{n+1})^T}
 \end{equation}
 
-This however leads to an optimization that is convex for $W$ and $H$, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while solving for $W$, and 2) keeping $W$ fixed while solving for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
+This however leads to an optimization that is convex for $W$ and $H$, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while minimizing least squares for $W$, and 2) keeping $W$ fixed while minimizing least squares for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
 
 \subsection{Sparse auto-encoder}
 A regular auto-encoder seeks to learn a hidden representation that makes it possible to reconstruct the original input, \cite{Vincent}. The mapping from an input vector to a hidden/latent representation, the encoding step, can be described as:
@@ -150,14 +150,13 @@ Updating the weights and the biases is done with the use of backpropagation algo
 
 \section{Setup}
 \label{sec:setup}
+As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach as proposed by \cite{Hosseini-Asl2016}. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead.
 
-Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
-
-architecture drawing with stacked training and softmax/sigmoid layer.
-
+\subsection{Verification}
 MNIST verification
 
 Add a reference with the parameters used for both models from the paper. The sparsity is different.
+
 
 \begin{figure}[H]
 	\centering
@@ -171,12 +170,21 @@ Add a reference with the parameters used for both models from the paper. The spa
 	\caption{MNIST confusion matrix}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-	\includegraphics[width=0.5\linewidth]{figures_3/raman_sim_hotspots.png}  
-	\caption{Hot spots}
-	\label{fig:hotspots}
-\end{figure}
+
+\subsection{Simulated Raman data}
+Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
+
+\begin{figure*}[!h]
+  \includegraphics[width=1\textwidth]{figures_3/setup_diagram.png}
+  \caption{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. }
+\end{figure*}
+
+%\begin{figure}[H]
+%    \centering
+%	\includegraphics[width=0.5\linewidth]{figures_3/raman_sim_hotspots.png}  
+%	\caption{Hot spots}
+%	\label{fig:hotspots}
+%\end{figure}
 
 
 \begin{figure}[H]

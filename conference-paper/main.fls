@@ -138,9 +138,9 @@ INPUT c:/texlive/2016/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
 INPUT figures_3/Confusion_matrix_fine_tune.png
 INPUT ./figures_3/Confusion_matrix_fine_tune.png
 INPUT ./figures_3/Confusion_matrix_fine_tune.png
-INPUT figures_3/raman_sim_hotspots.png
-INPUT ./figures_3/raman_sim_hotspots.png
-INPUT ./figures_3/raman_sim_hotspots.png
+INPUT figures_3/setup_diagram.png
+INPUT ./figures_3/setup_diagram.png
+INPUT ./figures_3/setup_diagram.png
 INPUT figures_3/raman_sim_training_data_2.png
 INPUT ./figures_3/raman_sim_training_data_2.png
 INPUT ./figures_3/raman_sim_training_data_2.png
