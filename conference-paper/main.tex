@@ -150,9 +150,16 @@ f(w_{ij}) = \begin{cases}
 
 Updating the weights and the biases is done with the use of backpropagation algorithm. 
 
+
+\begin{figure*}[!h]
+  \includegraphics[width=1\textwidth]{figures_3/setup_diagram.png}
+  \caption{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. }\label{fig:setup}
+\end{figure*}
+
 \section{Setup}
 \label{sec:setup}
-As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach as proposed by \cite{Hosseini-Asl2016}. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead.
+
+As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach as proposed by \cite{Hosseini-Asl2016}. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
 
 \subsection{Verification}
 MNIST verification
@@ -178,10 +185,6 @@ Add a reference with the parameters used for both models from the paper. The spa
 \subsection{Simulated Raman data}
 Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
 
-\begin{figure*}[!h]
-  \includegraphics[width=1\textwidth]{figures_3/setup_diagram.png}
-  \caption{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. }
-\end{figure*}
 
 %\begin{figure}[H]
 %    \centering
