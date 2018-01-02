@@ -17,65 +17,70 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{Wei2013}
+\citation{Alstrom2017}
 \citation{Hosseini-Asl2016}
 \citation{Hosseini-Asl2016}
 \citation{Seung1999}
-\@writefile{toc}{\contentsline {section}{\numberline {1} Introduction}{2}{section.1}}
-\newlabel{sec:intro}{{1}{2}{Introduction}{section.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2} Methods}{2}{section.2}}
-\newlabel{sec:methods}{{2}{2}{Methods}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1} Non-negative matrix factorization}{2}{subsection.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1} Introduction}{1}{section.1}}
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2} Methods}{1}{section.2}}
+\newlabel{sec:methods}{{2}{1}{Methods}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1} Non-negative matrix factorization}{1}{subsection.2.1}}
 \citation{Dempster1977}
 \citation{Langville2014}
 \citation{Vincent}
 \citation{Hosseini-Asl2016}
 \citation{Hosseini-Asl2016}
 \citation{Hosseini-Asl2016}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2} Sparse auto-encoder}{2}{subsection.2.2}}
+\newlabel{eq:lossfunc}{{2.2}{2}{Sparse auto-encoder}{equation.2.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3} Non-negativity constraints}{2}{section.3}}
+\newlabel{sec:prior}{{3}{2}{Non-negativity constraints}{section.3}{}}
 \citation{Hosseini-Asl2016}
 \citation{Vincent}
 \citation{Hosseini-Asl2016}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2} Sparse auto-encoder}{3}{subsection.2.2}}
-\newlabel{eq:lossfunc}{{2.2}{3}{Sparse auto-encoder}{equation.2.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3} Non-negativity constraints}{3}{section.3}}
-\newlabel{sec:prior}{{3}{3}{Non-negativity constraints}{section.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4} Setup}{4}{section.4}}
-\newlabel{sec:setup}{{4}{4}{Setup}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1} Verification}{4}{subsection.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces MNIST latent space after finetuning\relax }}{4}{figure.caption.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces MNIST confusion matrix\relax }}{4}{figure.caption.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2} Simulated Raman data}{4}{subsection.4.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Raman simulation data\relax }}{4}{figure.caption.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4} Setup}{3}{section.4}}
+\newlabel{sec:setup}{{4}{3}{Setup}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1} Verification}{3}{subsection.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces MNIST latent space after finetuning\relax }}{3}{figure.caption.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces MNIST confusion matrix\relax }}{3}{figure.caption.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2} Simulated Raman data}{3}{subsection.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hot spots\relax }}{3}{figure.caption.4}}
+\newlabel{fig:hotspots}{{4}{3}{Hot spots\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Raman simulation data\relax }}{3}{figure.caption.5}}
+\newlabel{fig:raman}{{5}{3}{Raman simulation data\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5} Results}{3}{section.5}}
+\newlabel{sec:results}{{5}{3}{Results}{section.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. \relax }}{4}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:raman}{{4}{4}{Raman simulation data\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5} Results}{4}{section.5}}
-\newlabel{sec:results}{{5}{4}{Results}{section.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Component identification\relax }}{4}{figure.caption.5}}
-\newlabel{fig:components}{{5}{4}{Component identification\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. \relax }}{5}{figure.caption.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Weights for the second and softmax layers\relax }}{5}{figure.caption.6}}
-\newlabel{fig:weights}{{6}{5}{Weights for the second and softmax layers\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.\relax }}{5}{figure.caption.7}}
-\newlabel{fig:activations}{{7}{5}{Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.\relax }}{5}{figure.caption.8}}
-\newlabel{fig:Dspace}{{8}{5}{Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Confuson matrix for the raman data\relax }}{5}{figure.caption.9}}
-\newlabel{fig:confusion}{{9}{5}{Confuson matrix for the raman data\relax }{figure.caption.9}{}}
+\newlabel{fig:setup}{{1}{4}{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. \relax }{figure.caption.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Component identification\relax }}{4}{figure.caption.6}}
+\newlabel{fig:components}{{6}{4}{Component identification\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Weights for the second and softmax layers\relax }}{4}{figure.caption.7}}
+\newlabel{fig:weights}{{7}{4}{Weights for the second and softmax layers\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.\relax }}{4}{figure.caption.8}}
+\newlabel{fig:activations}{{8}{4}{Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.\relax }}{5}{figure.caption.9}}
+\newlabel{fig:Dspace}{{9}{5}{Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Confuson matrix for the raman data\relax }}{5}{figure.caption.10}}
+\newlabel{fig:confusion}{{10}{5}{Confuson matrix for the raman data\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Predicted concentration using activations from sigmoid function\relax }}{5}{figure.caption.11}}
+\newlabel{fig:conc_sigmoids}{{11}{5}{Predicted concentration using activations from sigmoid function\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Predicted concentration using probabilities (left) and NMF (right)\relax }}{5}{figure.caption.12}}
+\newlabel{fig:comparison}{{12}{5}{Predicted concentration using probabilities (left) and NMF (right)\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6} Discussion}{5}{section.6}}
+\newlabel{sec:discussion}{{6}{5}{Discussion}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7} Conclusion}{5}{section.7}}
+\newlabel{sec:conclusion}{{7}{5}{Conclusion}{section.7}{}}
 \bibstyle{IEEEbib}
 \bibdata{mendeley}
 \bibcite{Wei2013}{1}
-\bibcite{Hosseini-Asl2016}{2}
-\bibcite{Seung1999}{3}
-\bibcite{Dempster1977}{4}
-\bibcite{Langville2014}{5}
-\bibcite{Vincent}{6}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Predicted concentration using activations from sigmoid function\relax }}{6}{figure.caption.10}}
-\newlabel{fig:conc_sigmoids}{{10}{6}{Predicted concentration using activations from sigmoid function\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Predicted concentration using probabilities (left) and NMF (right)\relax }}{6}{figure.caption.11}}
-\newlabel{fig:comparison}{{11}{6}{Predicted concentration using probabilities (left) and NMF (right)\relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6} Discussion}{6}{section.6}}
-\newlabel{sec:discussion}{{6}{6}{Discussion}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7} Conclusion}{6}{section.7}}
-\newlabel{sec:conclusion}{{7}{6}{Conclusion}{section.7}{}}
+\bibcite{Alstrom2017}{2}
+\bibcite{Hosseini-Asl2016}{3}
+\bibcite{Seung1999}{4}
+\bibcite{Dempster1977}{5}
+\bibcite{Langville2014}{6}
+\bibcite{Vincent}{7}
 \@writefile{toc}{\contentsline {section}{\numberline {8} REFERENCES}{6}{section.8}}
 \newlabel{sec:ref}{{8}{6}{REFERENCES}{section.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {9} References}{6}{section.9}}

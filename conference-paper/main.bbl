@@ -6,6 +6,14 @@ Hong Wei and Hongxing Xu,
   Raman spectroscopy},''
 \newblock {\em Nanoscale}, vol. 5, no. 22, pp. 10794, oct 2013.
 
+\bibitem{Alstrom2017}
+Tommy~S. Alstrom, Mikkel~N. Schmidt, Tomas Rindzevicius, Anja Boisen, and Jan
+  Larsen,
+\newblock ``{A pseudo-Voigt component model for high-resolution recovery of
+  constituent spectra in Raman spectroscopy},''
+\newblock in {\em 2017 IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}. mar 2017, pp. 2317--2321, IEEE.
+
 \bibitem{Hosseini-Asl2016}
 Ehsan Hosseini-Asl, Jacek~M. Zurada, and Olfa Nasraoui,
 \newblock ``{Deep Learning of Part-Based Representation of Data Using Sparse

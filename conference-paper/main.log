@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.4)  29 DEC 2017 18:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.4)  2 JAN 2018 10:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -263,26 +263,7 @@ tempboxa \hbox {#1. #2} \ifdim \wd \@tempboxa >\hsize #1. #2\par \else \hbox to
 \c@ContinuedFloat=\count111
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
-) (./main.aux
-
-./main.aux:63: LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.63 <
-      <<<<<< HEAD
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Label `fig:conc_sigmoids' multiply defined.
-
-
-LaTeX Warning: Label `fig:comparison' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
@@ -304,22 +285,6 @@ LaTeX Font Info:    Try loading font information for OT1+ptm on input line 48.
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (c:/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-Overfull \hbox (119.19493pt too wide) in paragraph at lines 63--13
-[]\OT1/cmr/m/n/10 <<<<<<< HEAD =======   >>>>>>> 80c29f3238db03b9b611e13a448bae
-a5a3e96da9
- []
-
-
-Overfull \hbox (113.07939pt too wide) in paragraph at lines 63--13
-\OT1/cmr/m/n/10 <<<<<<< HEAD     =======   >>>>>>> 80c29f3238db03b9b611e13a448b
-aea5a3e96da9
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--13
-
- []
-
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count112
 \scratchdimen=\dimen125
@@ -370,6 +335,18 @@ LaTeX Info: Redefining \nameref on input line 48.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 58.
+
+Underfull \hbox (badness 2503) in paragraph at lines 58--60
+\OT1/ptm/m/n/10 neg-a-tiv-ity con-straints, non-negative ma-trix fac-tor-iza-ti
+on,
+ []
+
 
 Underfull \hbox (badness 10000) has occurred while \output is active
 []
@@ -387,61 +364,55 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 
-]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 58.
+] [2]
+<figures_4/setup_diagram.png, id=113, 735.74875pt x 199.74625pt>
+File: figures_4/setup_diagram.png Graphic file (type png)
 
-Underfull \hbox (badness 2503) in paragraph at lines 58--60
-\OT1/ptm/m/n/10 neg-a-tiv-ity con-straints, non-negative ma-trix fac-tor-iza-ti
-on,
- []
+<use figures_4/setup_diagram.png>
+Package pdftex.def Info: figures_4/setup_diagram.png used on input line 153.
+(pdftex.def)             Requested size: 506.45905pt x 137.50198pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 154.
 
-[2
 
-]
-Underfull \hbox (badness 1043) in paragraph at lines 155--156
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 160--161
 \OT1/ptm/m/n/10 Newton method which ap-prox-i-mates the hes-sian ma-trix.
  []
 
-[3]
+
 <./figures_4/latent_space_finetune_no_legend.png, id=118, 433.62pt x 227.04825p
 t>
 File: ./figures_4/latent_space_finetune_no_legend.png Graphic file (type png)
  <use ./figures_4/latent_space_finetune_no_legend.png>
 Package pdftex.def Info: ./figures_4/latent_space_finetune_no_legend.png used o
-n input line 166.
+n input line 172.
 (pdftex.def)             Requested size: 244.6937pt x 128.12659pt.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 167.
 
-<./figures_4/Confusion_matrix_fine_tune_2.png, id=120, 867.24pt x 433.62pt>
+<./figures_4/Confusion_matrix_fine_tune_2.png, id=119, 867.24pt x 433.62pt>
 File: ./figures_4/Confusion_matrix_fine_tune_2.png Graphic file (type png)
 
 <use ./figures_4/Confusion_matrix_fine_tune_2.png>
 Package pdftex.def Info: ./figures_4/Confusion_matrix_fine_tune_2.png used on i
-nput line 173.
+nput line 179.
 (pdftex.def)             Requested size: 244.6937pt x 122.34569pt.
 
-<figures_3/setup_diagram.png, id=121, 735.74875pt x 199.74625pt>
-File: figures_3/setup_diagram.png Graphic file (type png)
+<figures_3/raman_sim_hotspots.png, id=121, 296.90926pt x 251.7405pt>
+File: figures_3/raman_sim_hotspots.png Graphic file (type png)
 
-<use figures_3/setup_diagram.png>
-Package pdftex.def Info: figures_3/setup_diagram.png used on input line 182.
-(pdftex.def)             Requested size: 506.45905pt x 137.50198pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<use figures_3/raman_sim_hotspots.png>
+Package pdftex.def Info: figures_3/raman_sim_hotspots.png used on input line 19
+4.
+(pdftex.def)             Requested size: 122.34685pt x 103.73283pt.
 
 <./figures_4/raman_sim_training_data_2.png, id=122, 867.24pt x 578.16pt>
 File: ./figures_4/raman_sim_training_data_2.png Graphic file (type png)
 
 <use ./figures_4/raman_sim_training_data_2.png>
 Package pdftex.def Info: ./figures_4/raman_sim_training_data_2.png used on inpu
-t line 197.
+t line 203.
 (pdftex.def)             Requested size: 244.6937pt x 163.1276pt.
 
 <./figures_4/raman_sim_3_encode_layer_1_finetune_13.png, id=127, 290.88675pt x 
@@ -450,48 +421,42 @@ File: ./figures_4/raman_sim_3_encode_layer_1_finetune_13.png Graphic file (type
  png)
  <use ./figures_4/raman_sim_3_encode_layer_1_finetune_13.png>
 Package pdftex.def Info: ./figures_4/raman_sim_3_encode_layer_1_finetune_13.png
- used on input line 213.
+ used on input line 219.
 (pdftex.def)             Requested size: 202.58052pt x 107.79375pt.
 
-<./figures_4/raman_sim_second_softmax_encode_2.png, id=129, 867.24pt x 433.62pt
+[3 <./figures_4/latent_space_finetune_no_legend.png> <./figures_4/Confusion_mat
+rix_fine_tune_2.png> <./figures_3/raman_sim_hotspots.png> <./figures_4/raman_si
+m_training_data_2.png>]
+<./figures_4/raman_sim_second_softmax_encode_2.png, id=141, 867.24pt x 433.62pt
 >
 File: ./figures_4/raman_sim_second_softmax_encode_2.png Graphic file (type png)
 
  <use ./figures_4/raman_sim_second_softmax_encode_2.png>
 Package pdftex.def Info: ./figures_4/raman_sim_second_softmax_encode_2.png used
- on input line 223.
+ on input line 229.
 (pdftex.def)             Requested size: 253.22952pt x 126.61334pt.
 
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 223--224
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 229--230
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--226
+Underfull \hbox (badness 10000) in paragraph at lines 224--232
 
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./figures_4/latent_space_finetune_no_legend.png> <./figures_4/Confusion_ma
-trix_fine_tune_2.png> <./figures_4/raman_sim_training_data_2.png> <./figures_4/
-raman_sim_3_encode_layer_1_finetune_13.png>]
-
-LaTeX Warning: Reference `fig:hotspots' on page 5 undefined on input line 228.
 
 <./figures_4/DNN_prop_im.png, id=144, 867.24pt x 867.24pt>
 File: ./figures_4/DNN_prop_im.png Graphic file (type png)
 
 <use ./figures_4/DNN_prop_im.png>
-Package pdftex.def Info: ./figures_4/DNN_prop_im.png used on input line 236.
+Package pdftex.def Info: ./figures_4/DNN_prop_im.png used on input line 242.
 (pdftex.def)             Requested size: 126.61476pt x 126.61334pt.
 
 <./figures_4/DNN_sigmoid_im.png, id=145, 867.24pt x 867.24pt>
 File: ./figures_4/DNN_sigmoid_im.png Graphic file (type png)
 
 <use ./figures_4/DNN_sigmoid_im.png>
-Package pdftex.def Info: ./figures_4/DNN_sigmoid_im.png used on input line 237.
+Package pdftex.def Info: ./figures_4/DNN_sigmoid_im.png used on input line 243.
 
 (pdftex.def)             Requested size: 126.61476pt x 126.61334pt.
 
@@ -500,73 +465,72 @@ File: ./figures_4/DNN_D_vs_prob_6_2.png Graphic file (type png)
 
 <use ./figures_4/DNN_D_vs_prob_6_2.png>
 Package pdftex.def Info: ./figures_4/DNN_D_vs_prob_6_2.png used on input line 2
-49.
+55.
 (pdftex.def)             Requested size: 151.93925pt x 151.92807pt.
 
-<./figures_4/raman_sim_3_conf_matrix13_2.png, id=150, 867.24pt x 433.62pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./figures_4/setup_diagram.png> <./figures_4/raman_sim_3_encode_layer_1_fin
+etune_13.png> <./figures_4/raman_sim_second_softmax_encode_2.png> <./figures_4/
+DNN_prop_im.png> <./figures_4/DNN_sigmoid_im.png>]
+<./figures_4/raman_sim_3_conf_matrix13_2.png, id=164, 867.24pt x 433.62pt>
 File: ./figures_4/raman_sim_3_conf_matrix13_2.png Graphic file (type png)
 
 <use ./figures_4/raman_sim_3_conf_matrix13_2.png>
 Package pdftex.def Info: ./figures_4/raman_sim_3_conf_matrix13_2.png used on in
-put line 264.
+put line 270.
 (pdftex.def)             Requested size: 253.22952pt x 126.61334pt.
 
-Overfull \hbox (8.53583pt too wide) in paragraph at lines 264--265
+Overfull \hbox (8.53583pt too wide) in paragraph at lines 270--271
  [][] 
  []
 
-<./figures_4/DNN_pred_conc_sigmoid_2.png, id=152, 578.16pt x 578.16pt>
+<./figures_4/DNN_pred_conc_sigmoid_2.png, id=166, 578.16pt x 578.16pt>
 File: ./figures_4/DNN_pred_conc_sigmoid_2.png Graphic file (type png)
 
 <use ./figures_4/DNN_pred_conc_sigmoid_2.png>
 Package pdftex.def Info: ./figures_4/DNN_pred_conc_sigmoid_2.png used on input 
-line 274.
+line 280.
 (pdftex.def)             Requested size: 131.67656pt x 131.66833pt.
- [5 <./figures_3/setup_diagram.png> <./figures_4/raman_sim_second_softmax_encod
-e_2.png> <./figures_4/DNN_prop_im.png> <./figures_4/DNN_sigmoid_im.png> <./figu
-res_4/DNN_D_vs_prob_6_2.png> <./figures_4/raman_sim_3_conf_matrix13_2.png>]
-<./figures_4/DNN_pred_conc_prob_2.png, id=171, 578.16pt x 578.16pt>
+
+<./figures_4/DNN_pred_conc_prob_2.png, id=169, 578.16pt x 578.16pt>
 File: ./figures_4/DNN_pred_conc_prob_2.png Graphic file (type png)
 
 <use ./figures_4/DNN_pred_conc_prob_2.png>
 Package pdftex.def Info: ./figures_4/DNN_pred_conc_prob_2.png used on input lin
-e 283.
+e 289.
 (pdftex.def)             Requested size: 126.61476pt x 126.61334pt.
 
-<./figures_4/nmf_pred_conc_2.png, id=172, 578.16pt x 578.16pt>
+<./figures_4/nmf_pred_conc_2.png, id=170, 578.16pt x 578.16pt>
 File: ./figures_4/nmf_pred_conc_2.png Graphic file (type png)
 
 <use ./figures_4/nmf_pred_conc_2.png>
-Package pdftex.def Info: ./figures_4/nmf_pred_conc_2.png used on input line 284
+Package pdftex.def Info: ./figures_4/nmf_pred_conc_2.png used on input line 290
 .
 (pdftex.def)             Requested size: 126.61476pt x 126.61334pt.
- (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 324.
- [6 <./figures_4/DNN_pred_conc_sigmoid_2.png> <./figures_4/DNN_pred_conc_prob_2
-.png> <./figures_4/nmf_pred_conc_2.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 324.
+ [5 <./figures_4/DNN_D_vs_prob_6_2.png> <./figures_4/raman_sim_3_conf_matrix13_
+2.png> <./figures_4/DNN_pred_conc_sigmoid_2.png> <./figures_4/DNN_pred_conc_pro
+b_2.png> <./figures_4/nmf_pred_conc_2.png>] (./main.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 330.
+ [6
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 330.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 324.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 324.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 330.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 330.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E352A55973877D68D80D8149AF777A41;709.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 324.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 330.
  ) 
 Here is how much of TeX's memory you used:
- 6983 strings out of 493013
- 106375 string characters out of 6136994
- 204032 words of memory out of 5000000
- 10398 multiletter control sequences out of 15000+600000
+ 6993 strings out of 493013
+ 106611 string characters out of 6136994
+ 202237 words of memory out of 5000000
+ 10404 multiletter control sequences out of 15000+600000
  24646 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,10n,39p,1080b,368s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,10n,39p,1080b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fonts/type1
@@ -580,10 +544,10 @@ nts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
 urw/times/utmb8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmbi8a.
 pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/20
 16/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 797766 bytes).
+Output written on main.pdf (6 pages, 799791 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
- 189 compressed objects within 2 object streams
- 46 named destinations out of 1000 (max. 500000)
- 170 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 175 words of extra memory for PDF output out of 10000 (max. 10000000)
 

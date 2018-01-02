@@ -6,45 +6,45 @@ Database file #1: mendeley.bib
 Warning--empty journal in Langville2014
 Warning--empty journal in Vincent
 Warning--empty year in Vincent
-You've used 6 entries,
+You've used 7 entries,
             1838 wiz_defined-function locations,
-            502 strings with 4749 characters,
-and the built_in function-call counts, 1245 in all, are:
-= -- 98
-> -- 69
-< -- 0
-+ -- 25
-- -- 19
-* -- 117
-:= -- 211
-add.period$ -- 6
-call.type$ -- 6
-change.case$ -- 6
+            510 strings with 5078 characters,
+and the built_in function-call counts, 1697 in all, are:
+= -- 144
+> -- 86
+< -- 1
++ -- 31
+- -- 24
+* -- 149
+:= -- 269
+add.period$ -- 8
+call.type$ -- 7
+change.case$ -- 7
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 43
-empty$ -- 116
-format.name$ -- 19
-if$ -- 259
+cite$ -- 10
+duplicate$ -- 66
+empty$ -- 157
+format.name$ -- 24
+if$ -- 370
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 5
-newline$ -- 32
-num.names$ -- 6
-pop$ -- 19
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 37
+num.names$ -- 7
+pop$ -- 24
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 16
+skip$ -- 34
 stack$ -- 0
-substring$ -- 71
-swap$ -- 4
-text.length$ -- 0
+substring$ -- 111
+swap$ -- 17
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 11
-width$ -- 7
-write$ -- 61
+while$ -- 15
+width$ -- 8
+write$ -- 73
 (There were 3 warnings)

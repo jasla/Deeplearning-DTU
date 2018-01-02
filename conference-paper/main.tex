@@ -66,9 +66,7 @@ Raman scattering is a technique used to detect and identify molecules using the 
 
 Surface-enhanced Raman Spectroscopy (SERS) is an enhancement of Raman Scattering, that uses surfaces such as metal or nanostructures to absorb molecules. This enables the identification of single molecules.  For instance, noble metal nanostructures can concentrate light which greatly enhances the electromagnetic field near the nanostructure. These areas become so called "hot spots" that amplify weak Raman scattering signals. The placement and design of these nanostructers with high SERS preformance is beyond the scope of this work, however additional information can be found in \cite{Wei2013} and references herein.
 
-\textbf{Missing reference on the complexity of mixtures in spectra, this includes the nonlinearities when mixing.}
-
-Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. Traditional curve resolution methods such as MCR/NMF have increased runtimes of multiple days in decomposing these Raman maps. 
+Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. This provides very large complex matrices that contain patterns and structures. Multivariate curve resolution methods (MCR) have successfully been applied for matrix factorization. This includes specifically methods such as MCR and NMF (Nonnegative matrix factorization). These methods do however fail at very low signal-to-noise ratios and any meaningful spectral components are difficult to recover. This is moreover increasingly difficult when non-linear interactions create interactions which are not linear seperatable. \cite{Alstrom2017}
 
 This work aims to evaluate the application of Sparse Autoencoders with non-negativity constraints on Raman spectra obtained from SERS. The novelty of this work consists of comparing traditional curve resolution methods such as NMF to the methodology and work completed by \cite{Hosseini-Asl2016}.
 
@@ -152,7 +150,7 @@ Updating the weights and the biases is done with the use of backpropagation algo
 
 
 \begin{figure*}[!h]
-  \includegraphics[width=1\textwidth]{figures_3/setup_diagram.png}
+  \includegraphics[width=1\textwidth]{figures_4/setup_diagram.png}
   \caption{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. }\label{fig:setup}
 \end{figure*}
 
@@ -162,6 +160,7 @@ Updating the weights and the biases is done with the use of backpropagation algo
 As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach as proposed by \cite{Hosseini-Asl2016}. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
 
 \subsection{Verification}
+
 MNIST verification
 
 Add a reference with the parameters used for both models from the paper. The sparsity is different. % JSL: it is the non-negativity that is different
@@ -183,15 +182,19 @@ Add a reference with the parameters used for both models from the paper. The spa
 
 
 \subsection{Simulated Raman data}
-Dataset origin, description of wavenumbers, raman map size. Definitions for the rest of the paper.
+A simulated SERS dataset is created using MATLAB. The dataset is created using parameters such as the number of wavenumbers, and the size of the Raman map with additional parameters such as; a) Signal-to-background-ratio (SBR) that determines the intensity of the peaks with respect to the background. b) $K$ the number of Voight-profiles, e.g. the number of "substancens" or components in the spectrum and c) the number of hotspots in each Raman map.
+
+The dataset used for training consisted of 1000 wavenumbers using a Raman map size of 100 $\times$ 100 samples. The number of hotspots was 10 with an SBR of 0 dB. Measurement noise was given as $10-3$. Two different substances was created using the same parametres, however varying $K$. The resulting training data, raman spectra, consisting of $K=1$ and $K=2$ can be observed in Fig. \ref{fig:raman} on the top most subplots. These are for the remainder of the paper referenced as Component 1 and Component 2.
+
+The test data is a mixture of both components with an added "anomaly" to the spectrum. The mixture levels are given in steps of 10\%, e.g. one test set consists of 10\% of Component 1 with 90\% of Component 2, and so on. 
 
 
-%\begin{figure}[H]
-%    \centering
-%	\includegraphics[width=0.5\linewidth]{figures_3/raman_sim_hotspots.png}  
-%	\caption{Hot spots}
-%	\label{fig:hotspots}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.5\linewidth]{figures_3/raman_sim_hotspots.png}  
+\caption{Hot spots}
+\label{fig:hotspots}
+\end{figure}
 
 
 \begin{figure}[H]
