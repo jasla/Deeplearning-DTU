@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1514886786 "main.aux" "main.bbl" "main" 1514886789
+["bibtex main"] 1514895186 "main.aux" "main.bbl" "main" 1514895189
   "./IEEEbib.bst" 1513597737 18924 9ff833f4bf67f47893e44ee17b52d211 ""
-  "main.aux" 1514886789 6460 58908a8ca91ccc8b19fd90203b5e1d6e ""
-  "mendeley.bib" 1514886677 5368 b491b0bf374203d366cde1bcd98e1504 ""
+  "main.aux" 1514895188 6466 41270ded333399ef13b12fd034b6ee6e ""
+  "mendeley.bib" 1514894553 6771 31f063472584268d867bed7ccdeb5f5d ""
   (generated)
-  "main.bbl"
   "main.blg"
-["pdflatex"] 1514886786 "c:\Users\jakob\Documents\GitHub\Deeplearning-DTU\conference-paper\main.tex" "main.pdf" "main" 1514886789
+  "main.bbl"
+["pdflatex"] 1514895186 "c:\Users\jakob\Documents\GitHub\Deeplearning-DTU\conference-paper\main.tex" "main.pdf" "main" 1514895189
   "02460.sty" 1513597737 9443 2f514174393fab9c5bbe6699e10ee523 ""
   "c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc" 1493878803 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1493878998 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -91,7 +91,7 @@
   "c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1493880666 2373944 dee8225b8c4e09d7acdabed2f12427fd ""
   "c:/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1493880716 4047358 8347cea176ecd54a866e8d00ce423e48 ""
   "c:/texlive/2016/texmf.cnf" 1493880652 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "c:\Users\jakob\Documents\GitHub\Deeplearning-DTU\conference-paper\main.tex" 1514886782 23784 689c3959308e092f8af18aca065bb7e4 ""
+  "c:\Users\jakob\Documents\GitHub\Deeplearning-DTU\conference-paper\main.tex" 1514895182 23715 eff705db6696bb146596ef333523ea31 ""
   "figures_3/raman_sim_hotspots.png" 1514449211 13539 abd0add8b54e18e844cd3d76c354d015 ""
   "figures_4/Confusion_matrix_fine_tune_2.png" 1514570063 41695 753702ca4fbbe67dd8e3c68a1d32f0e7 ""
   "figures_4/DNN_D_vs_prob_6_2.png" 1514570063 100999 dcd52926348fa795395d380be2204cc1 ""
@@ -106,12 +106,12 @@
   "figures_4/raman_sim_second_softmax_encode_2.png" 1514570063 22688 11f056900c81c1b4988b6cd0f34a5c36 ""
   "figures_4/raman_sim_training_data_2.png" 1514570063 68924 4bbd59fd4ea255c308a385094385c454 ""
   "figures_4/setup_diagram.png" 1514884368 41755 86ac5c55557e1286249bfd08cb8fef19 ""
-  "main.aux" 1514886789 6460 58908a8ca91ccc8b19fd90203b5e1d6e ""
-  "main.bbl" 1514886786 1764 b9ad5ecf2d723924df8edb4c9203dcd9 "bibtex main"
-  "main.out" 1514886789 709 e352a55973877d68d80d8149af777a41 ""
-  "main.tex" 1514886782 23784 689c3959308e092f8af18aca065bb7e4 ""
+  "main.aux" 1514895188 6466 41270ded333399ef13b12fd034b6ee6e ""
+  "main.bbl" 1514895186 1924 c92edf893cfc9fcb0e1208375769f951 "bibtex main"
+  "main.out" 1514895188 709 e352a55973877d68d80d8149af777a41 ""
+  "main.tex" 1514895182 23715 eff705db6696bb146596ef333523ea31 ""
   (generated)
+  "main.log"
+  "main.aux"
   "main.out"
   "main.pdf"
-  "main.aux"
-  "main.log"

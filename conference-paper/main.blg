@@ -3,39 +3,41 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: IEEEbib.bst
 Database file #1: mendeley.bib
+Warning--empty journal in Sajda
+Warning--empty year in Sajda
 Warning--empty journal in Langville2014
 Warning--empty journal in Vincent
 Warning--empty year in Vincent
-You've used 7 entries,
+You've used 8 entries,
             1838 wiz_defined-function locations,
-            510 strings with 5078 characters,
-and the built_in function-call counts, 1697 in all, are:
-= -- 144
-> -- 86
+            514 strings with 5204 characters,
+and the built_in function-call counts, 1852 in all, are:
+= -- 152
+> -- 97
 < -- 1
-+ -- 31
-- -- 24
-* -- 149
-:= -- 269
-add.period$ -- 8
-call.type$ -- 7
-change.case$ -- 7
++ -- 35
+- -- 27
+* -- 163
+:= -- 295
+add.period$ -- 9
+call.type$ -- 8
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 66
-empty$ -- 157
-format.name$ -- 24
-if$ -- 370
+cite$ -- 13
+duplicate$ -- 73
+empty$ -- 171
+format.name$ -- 27
+if$ -- 400
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 6
-newline$ -- 37
-num.names$ -- 7
-pop$ -- 24
+int.to.str$ -- 8
+missing$ -- 7
+newline$ -- 42
+num.names$ -- 8
+pop$ -- 29
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 34
+skip$ -- 38
 stack$ -- 0
 substring$ -- 111
 swap$ -- 17
@@ -43,8 +45,8 @@ text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 3
-while$ -- 15
-width$ -- 8
-write$ -- 73
-(There were 3 warnings)
+warning$ -- 5
+while$ -- 16
+width$ -- 9
+write$ -- 81
+(There were 5 warnings)

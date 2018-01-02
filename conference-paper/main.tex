@@ -66,7 +66,7 @@ Raman scattering is a technique used to detect and identify molecules using the 
 
 Surface-enhanced Raman Spectroscopy (SERS) is an enhancement of Raman Scattering, that uses surfaces such as metal or nanostructures to absorb molecules. This enables the identification of single molecules.  For instance, noble metal nanostructures can concentrate light which greatly enhances the electromagnetic field near the nanostructure. These areas become so called "hot spots" that amplify weak Raman scattering signals. The placement and design of these nanostructers with high SERS preformance is beyond the scope of this work, however additional information can be found in \cite{Wei2013} and references herein.
 
-Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. This provides very large complex matrices that contain patterns and structures. Multivariate curve resolution methods (MCR) have successfully been applied for matrix factorization. This includes specifically methods such as MCR and NMF (Nonnegative matrix factorization). These methods do however fail at very low signal-to-noise ratios and any meaningful spectral components are difficult to recover. This is moreover increasingly difficult when non-linear interactions create interactions which are not linear seperatable. \cite{Alstrom2017}
+Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. This provides very large complex matrices that contain patterns and structures. Multivariate curve resolution methods (MCR) and NMF (Nonnegative matrix factorization) have successfully been applied for matrix factorization.\cite{Sajda} These methods do however fail at very low signal-to-noise ratios and any meaningful spectral components are difficult to recover. This is moreover increasingly difficult when interactions create interactions that are not linear seperatable. \cite{Alstrom2017}
 
 This work aims to evaluate the application of Sparse Autoencoders with non-negativity constraints on Raman spectra obtained from SERS. The novelty of this work consists of comparing traditional curve resolution methods such as NMF to the methodology and work completed by \cite{Hosseini-Asl2016}.
 
@@ -77,7 +77,6 @@ This work is organized as follows. Section~\ref{sec:methods} presents the method
 \label{sec:methods}
 
 This work seeks to compare traditional and proven methods for SERS analysis, i.e. curve resolution, such as NMF to denoising autoencoders with non-negativity constraints. 
-\textbf{Add how NMF/MCR is used in raman spectroscopy.}
 
 \subsection{Non-negative matrix factorization}
 
@@ -128,16 +127,16 @@ Imposing a sparse representation can also be seen as limiting the "activation" o
 \end{equation}
 
 Here $\hat{\mathbf{p}}$ is a vector of average activations, i.e. per hidden-layer. This combined with a weight decay and the reconstruction error provides with the cost function used for a sparse autoencoder \cite{Hosseini-Asl2016}
-\begin{equation}
+\begin{equation}\label{eq:lossfunc}
 J(\mathbf{W},\mathbf{b}) = J_E(\mathbf{W},\mathbf{b}) + \beta J_{KL}(p || \hat{\mathbf{p}}) + \frac{\lambda}{2}\sum_{l=1}^2\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}} (w_{ij}^{l})^2
-\end{equation}\label{eq:lossfunc}
+\end{equation}
 
 Here $\beta$ regulate the sparsity penality, and $\lambda$ is a standard weight decay term while $s_l$ and $s_{l+1}$ is the size of connected hidden layers. 
 
 \section{Non-negativity constraints}
 \label{sec:prior}
 
-Much like NMF, the idea of part-based representation, intuitively consists of combining in an additive way. By applying non-negativity constraints on a sparse autoencoder, the reconstruction of the input data is claimed by \cite{Hosseini-Asl2016} to be improved, since the autoencoder is capable of decomposing data into sparse elements and additively combine them at the decoder. The work in \cite{Hosseini-Asl2016} proposes non-negativity by replacing the weight decay in Eq. \ref{eq:lossfunc}. This replaces $\lambda$ with $\alpha$ which is greater or equal to zero. Moreover the function $f(x)$ is introduced on the weights which applies a non-negativity constraint, regularized by $\alpha$. 
+Much like NMF, the idea of part-based representation, intuitively consists of combining in an additive way. By applying non-negativity constraints on a sparse autoencoder, the reconstruction of the input data is claimed by \cite{Hosseini-Asl2016} to be improved, since the autoencoder is capable of decomposing data into sparse elements and additively combine them at the decoder. The work in \cite{Hosseini-Asl2016} proposes non-negativity by replacing the weight decay in Eq. \eqref{eq:lossfunc}. This replaces $\lambda$ with $\alpha$ which is greater or equal to zero. Moreover the function $f(x)$ is introduced on the weights which applies a non-negativity constraint, regularized by $\alpha$. 
 
 \begin{equation}
 f(w_{ij}) = \begin{cases}
@@ -157,7 +156,7 @@ Updating the weights and the biases is done with the use of backpropagation algo
 \section{Setup}
 \label{sec:setup}
 
-As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach as proposed by \cite{Hosseini-Asl2016}. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
+As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
 
 \subsection{Verification}
 
@@ -186,7 +185,7 @@ A simulated SERS dataset is created using MATLAB. The dataset is created using p
 
 The dataset used for training consisted of 1000 wavenumbers using a Raman map size of 100 $\times$ 100 samples. The number of hotspots was 10 with an SBR of 0 dB. Measurement noise was given as $10-3$. Two different substances was created using the same parametres, however varying $K$. The resulting training data, raman spectra, consisting of $K=1$ and $K=2$ can be observed in Fig. \ref{fig:raman} on the top most subplots. These are for the remainder of the paper referenced as Component 1 and Component 2.
 
-The test data is a mixture of both components with an added "anomaly" to the spectrum. The mixture levels are given in steps of 10\%, e.g. one test set consists of 10\% of Component 1 with 90\% of Component 2, and so on. 
+The test data is a mixture of both components with an added "anomaly" to the spectrum. This is to emulate a nonlinearity in the spectra when mixing components. The mixture levels are given in steps of 10\%, e.g. one test set consists of 10\% of Component 1 with 90\% of Component 2, and so on. 
 
 
 \begin{figure}[H]
