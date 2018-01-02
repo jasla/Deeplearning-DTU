@@ -124,7 +124,7 @@ Imposing a sparse representation can also be seen as limiting the "activation" o
 
 \begin{equation}
   J_{KL}(p || \hat{\mathbf{p}}) = \sum_{j=1}^n p \log\frac{p}{\hat{p_{j}}} + (1-p) \log\frac{1-p}{1-\hat{p}_j}
-\end{equation}
+\end{equation} \label{eq:sparse}
 
 Here $\hat{\mathbf{p}}$ is a vector of average activations, i.e. per hidden-layer. This combined with a weight decay and the reconstruction error provides with the cost function used for a sparse autoencoder \cite{Hosseini-Asl2016}
 \begin{equation}\label{eq:lossfunc}
@@ -143,7 +143,7 @@ f(w_{ij}) = \begin{cases}
   w_{ij}^2 & w_{ij} < 0 \\
   0 & w_{ij} >
 \end{cases} 
-\end{equation}
+\end{equation}\label{eq:non_neg}
 
 Updating the weights and the biases is done with the use of backpropagation algorithm. 
 
@@ -251,7 +251,8 @@ We also plotted a running average to check that indeed the probabilities for cla
 \begin{figure}[H]
 	\centering
 %	\includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
-	\includegraphics[width=0.3\textwidth]{DNN_D_vs_prob_6_2.png}
+	\includegraphics[width=0.25\textwidth]{DNN_D_vs_prob_6_2.png} \hspace*{-.5cm}
+	\includegraphics[width=0.25\textwidth]{DNN_D_vs_act_6.png}	
 	\caption{Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.}
 	\label{fig:Dspace}
 \end{figure}
@@ -292,15 +293,20 @@ Finally, we also generated a comparison between NMF and the deep learning model 
 \end{figure}
 \section{Discussion}
 \label{sec:discussion}
+%JSL: Skal afsnittene rykkes om?
+The estimated components shown in Figure \ref{fig:components} are essential peak detections, which is sufficient for a classification task. It is clear that the estimated components are not strictly non-negative. This is due to the non-negative formulation \eqref{eq:non_neg} being a soft-constraint, which is in contrast to the usual hard-constraint (projection) formulation used in NMF. A way to improve this is to use the same update strategy as Seung and Lee \cite{Seung1999}. Besides achieving strict non-negativity this also has the advantage that we decrease the number of hyper parameters that has to be tuned.
+
+Intuitive a 3 component NMF would be able to reconstruct the the two signals in our data (one extra component is needed for the background). When using NCAE we were unable to achieve a satisfying first layer using only 3 components and needed to use 4 instead. As the background doesn't have to modelled with the purpose of classification, this mean that we end up with 3 components detecting the same peak. One solution to this would be to drop redundant components when fine tuning the final network (or even when increasing the depth of the network).
+
+It is clear that the method to achieve a sparse solution \eqref{eq:sparse} has its drawbacks, as one way to satisfy this, is to decrease the maximum activation during training. In our experience, this is exactly what happens, at least when using a too small batch size. However, increasing the batch size too we loose the benefits of this strategy. Furthermore, when applying the method to spectroscopic data, this formulation changes interpretation when moving from pre-training to fine tuning the full network. The reason for this is, as mentioned above, the background component is no longer needed, hence a sparser solution should be searched for. An alternative to \eqref{eq:sparse} would be to apply a sparse prior to the estimated components as done in \cite{snmf2006,ramanSNMF2014}.
+
+The resulting deep neural network is an effective classifier when detecting when there is a signal, with apparent issue illustrated in Figure \ref{fig:confusion} being mainly an issue of tuning our threshold for creating the background class. When the network is applied to mixed data, an undesired behaviour is observed in both Figure \ref{fig:activations} (left) and \ref{fig:comparison} (left). The probabilities for classes 0 and 1 losses their interpretation, as the Softmax function enhances even small differences in its inputs. However, in Figures \ref{fig:activations} (right) and \ref{fig:Dspace} (right) we see that the output of the sigmoid activation functions is a non decreasing function of the amount signal (both when varying D and concentration). From Figure \ref{fig:conc_sigmoids} and \ref{fig:comparison} (right) it is clear that a extra layer is needed in order to perform on the same level as NMF. This could be done by changing the Softmax layer into a regression layer.
 
 
-
-
-Comparison with NMF - main discussion here.
 
 \section{Conclusion}
 \label{sec:conclusion}
-
+We applied NNCAE to simulated SERS data consisting of pure signals to pre-train a deep neural network with a Softmax layer on top. The resulting network was with high precision able to distinguish pure signals from each other. When we applied the network to mixed data, the output probabilities from the Softmax layer wasn't related to the actual concentrations. The sigmoid activation functions indicated that changing the last layer into a regression layer, the network would perform comparable to NMF.
 
 % Below is an example of how to insert images. Delete the ``\vspace'' line,
 % uncomment the preceding line ``\centerline...'' and replace ``imageX.ps''
@@ -314,10 +320,10 @@ Comparison with NMF - main discussion here.
 
 
 
-\section{REFERENCES}
-\label{sec:ref}
-
-List and number all bibliographical references at the end of the paper.  The references can be numbered in alphabetic order or in order of appearance in the document.  When referring to them in the text, type the corresponding reference number in square brackets as shown at the end of this sentence .
+%\section{REFERENCES}
+%\label{sec:ref}
+%
+%List and number all bibliographical references at the end of the paper.  The references can be numbered in alphabetic order or in order of appearance in the document.  When referring to them in the text, type the corresponding reference number in square brackets as shown at the end of this sentence .
 
 % References should be produced using the bibtex program from suitable
 % BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography

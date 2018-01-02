@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Wei2013}
 Hong Wei and Hongxing Xu,
@@ -49,5 +49,20 @@ Pascal Vincent, Hugo Larochelle, Yoshua Bengio, and Pierre-Antoine Manzagol,
 \newblock ``{Extracting and Composing Robust Features with Denoising
   Autoencoders},''
 \newblock .
+
+\bibitem{snmf2006}
+Mikkel~N. Schmidt and Rasmus~K. Olsson,
+\newblock ``Single-channel speech separation using sparse non-negative
+  matrix,''
+\newblock in {\em Interspeech 2006 and 9th International Conference on Spoken
+  Language Processing, Interspeech 2006}, 2006, pp. 2614--2617.
+
+\bibitem{ramanSNMF2014}
+Tommy~S. Alstrøm, Kasper~B. Frøhling, Jan Larsen, Mikkel~N. Schmidt, Michael
+  Bache, Michael~S. Schmidt, Mogens~H. Jakobsen, and Anja Boisen,
+\newblock ``Improving the robustness of surface enhanced raman spectroscopy
+  based sensors by bayesian non-negative matrix factorization,''
+\newblock in {\em 2014 IEEE INTERNATIONAL WORKSHOP ON MACHINE LEARNING FOR
+  SIGNAL PROCESSING, SEPT. 21–24, 2014, REIMS, FRANCE}. 2014, IEEE.
 
 \end{thebibliography}
