@@ -464,6 +464,33 @@ for i in range(8):
     plt.legend(["Class " + str(j+1) for j in range(3)],loc = "center left",fontsize = 15)
     plt.xlim((10**(-3),1))
     
+#%% Plotting activations as function of mask
+Isort = Dsmall.argsort()
+I2 = C[:,0].argsort()
+n = 100
+for i in range(8):
+    plt.figure(figsize=(12,12))
+    
+    plt.plot(Dsmall,Encpred[:,0,I2[i]],'.',linewidth = 1,color = "#5e5eec")
+    plt.plot(Dsmall,Encpred[:,1,I2[i]],'.',linewidth = 1,color = "#5ea55e")
+    plt.plot(Dsmall,Encpred[:,2,I2[i]],'.',linewidth = 1,color = "#a55ea5")
+             
+    tmp = running_average(Encpred[Isort,0,I2[i]],N = n) 
+    plt.semilogx(Dsmall[Isort][n-1:],tmp,linewidth = 3,color = "#0000ff")
+    
+    tmp = running_average(Encpred[Isort,1,I2[i]],N = n) 
+    plt.semilogx(Dsmall[Isort][n-1:],tmp,linewidth = 3,color = "#008000")
+    
+    tmp = running_average(Encpred[Isort,2,I2[i]],N = n) 
+    plt.semilogx(Dsmall[Isort][n-1:],tmp,linewidth = 3,color = "#800080")
+    plt.title("Concentration 1: " +str(C[I2[i],0]),fontsize = 20)
+    plt.ylabel("Activation",fontsize = 20)
+    plt.xlabel("D",fontsize = 20)
+    plt.xticks(fontsize = 15)
+    plt.yticks(fontsize = 15)
+    plt.legend(["Unit " + str(j) for j in range(3)],loc = "center left",fontsize = 15)
+    plt.xlim((10**(-3),1))
+    
 #%% Plot predicted constrations using probabilities
 CpredMean = np.mean(Cpred[:,:2,:],axis = 0)
 CpredMean = CpredMean/np.sum(CpredMean,axis=0)
