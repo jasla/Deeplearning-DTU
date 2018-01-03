@@ -186,18 +186,20 @@ For checking that indeed the deep-learning model, NCAE, is implemented correctly
 \label{tab:parameters} 
 \end{table}
 
-
+The latent space after finetuning is displayed in Fig. \ref{fig:separationMNIST}. As it can be observed, the handwritten digits are better separated in the second layer.
 \begin{figure}[H]
 	\centering
 %	\includegraphics[width=1\linewidth]{figures_3/latent_space_finetune_no_legend.png}  
 	\includegraphics[width=1\linewidth]{latent_space_finetune_no_legend.png}  
 	\caption{MNIST latent space after finetuning}
-	\label{fig:separation} 
+	\label{fig:separationMNIST} 
 \end{figure}
 
+We also created a confusion matrix, Fig. \ref{fig:confusionMNIST}. The classification percentages are very high (greater and equal to 95\%) for both the validation and test data sets. This indicates that indeed the model works as hoped.
 
 \begin{figure}[H]
 %	\includegraphics[width=1\linewidth]{figures_3/Confusion_matrix_fine_tune.png}  \\
+   \centering
 	\includegraphics[width=1\linewidth]{Confusion_matrix_fine_tune_2.png}  
 	\caption{MNIST confusion matrix}
 	\label{fig:confusionMNIST} 
