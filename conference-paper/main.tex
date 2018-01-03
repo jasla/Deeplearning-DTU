@@ -53,23 +53,23 @@
 \maketitle
 %
 \begin{abstract}
-The standard tool to analyze raman spectroscopy signal is non-negative matrix factorization (NMF). In some of the cases, the observed signal is not a linear combination of pure spectra, thus removing the basic assumption behind using NMF for analyzing these signals. The research question addressed in this paper is whether the use of non-negative sparse autoenconders are able to model the nonlinearities and thus are able to correctly deconvolve Raman Spectre. A deep network model used for this purpose has been initially tested on the classical MNIST dataset with good results. A simulated Raman spectra dataset has been created and a similar deep network model has been compared with the classical approach NMF. As the results indicate, NMF performs better than the proposed model. However there is a strong belief that a few changes in the model will improve the results significantly.
+The standard tool to analyze Raman spectroscopy signal is non-negative matrix factorization (NMF). In some of the cases, the observed signal is not a linear combination of pure spectra, thus removing the basic assumption behind using NMF for analyzing these signals. The research question addressed in this paper is whether the use of sparse autoencoders with non-negative constraints are able to model the nonlinearities and thus are able to correctly deconvolve Raman spectra1. A deep network model used for this purpose has been initially tested on the classical MNIST dataset with good results. A simulated Raman spectra dataset has been created and a similar deep network model has been compared with NMF. As the results indicate, NMF performs better than the proposed model. However there is a strong belief that a few changes in the model will improve the results significantly.
 \end{abstract}
 %
 \begin{keywords}
-Raman spectroscopy, autoencoder, nonnegativity constraints, non-negative matrix factorization, sparsity
+Raman spectroscopy, autoencoder, non-negativity constraints, non-negative matrix factorization, sparsity
 \end{keywords}
 %
 \section{Introduction}
 \label{sec:intro}
 
-Raman scattering is a technique used to detect and identify molecules using the interaction of photons. It is a technique that is commonly used in chemistry and physics for detecting molecules by observing their vibrational and rotational modes. This is completed with the use of laser light. The photon excites the sample which causes scattering, meaning the photon has a change in energy over a short time period. This energy-change is reflected as a shift in frequency, also called a stokes shift, and by analysing the spectrum the molecules and combination of molecules can be identified. 
+Raman scattering is a technique used to detect and identify molecules using the interaction of photons. It is a technique that is commonly used in chemistry and physics for detecting molecules by observing their vibrational and rotational modes. This is completed with the use of laser light. The photon excites the sample which causes scattering, meaning the photon has a change in energy over a short time period. This energy-change is reflected as a shift in frequency, also called a stokes shift, and by analysing the spectrum the molecules and the combination of molecules can be identified. 
 
 Surface-enhanced Raman Spectroscopy (SERS) is an enhancement of Raman Scattering, that uses surfaces such as metal or nanostructures to absorb molecules. This enables the identification of single molecules.  For instance, noble metal nanostructures can concentrate light which greatly enhances the electromagnetic field near the nanostructure. These areas become the so called "hot spots" that amplify weak Raman scattering signals. The placement and design of these nanostructers with high SERS preformance is beyond the scope of this work, however additional information can be found in \cite{Wei2013} and references herein.
 
 Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. This provides very large complex matrices that contain patterns and structures. Multivariate curve resolution methods (MCR) and NMF (Nonnegative matrix factorization) have successfully been applied for matrix factorization \cite{Sajda}. These methods do however fail at very low signal-to-noise ratios and any meaningful spectral components are difficult to recover. This is moreover increasingly difficult when interactions create interactions that are not linear separable \cite{Alstrom2017}.
 
-This work aims to evaluate the application of Sparse Autoencoders with non-negativity constraints on Raman spectra obtained from SERS. The novelty of this work consists of comparing traditional curve resolution methods such as NMF to the methodology and work completed by \cite{Hosseini-Asl2016}.
+This work aims to evaluate the application of sparse autoencoders with non-negativity constraints on Raman spectra obtained from SERS simulated with MATLAB. The novelty of this work consists of comparing traditional curve resolution methods such as NMF to the methodology and work completed by \cite{Hosseini-Asl2016}.
 
 This work is organized as follows. Section~\ref{sec:methods} presents the methodology of non-negative matrix factorization and sparse autoencoders. Section~\ref{sec:prior} is a description of the non-negativity constraint in sparse autoencoders as proposed by \cite{Hosseini-Asl2016}. Section~\ref{sec:setup} details the implementation done in TensorFlow and verification using the well known MNIST dataset. Moreover this section also details the SERS dataset used for the primary results. Section~\ref{sec:results} describes the results obtained. A discussion is provided in Section~\ref{sec:discussion} and a conclusion in Section~\ref{sec:conclusion}.
 
@@ -102,8 +102,8 @@ W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{W^{n}H^{n+1}(H^{n+1})^T}
 
 This, however, leads to an optimization that is convex for $W$ and $H$ respectively, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while minimizing least squares for $W$, and 2) keeping $W$ fixed while minimizing least squares for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
 
-\subsection{Sparse auto-encoder}
-A regular auto-encoder seeks to learn a hidden representation that makes it possible to reconstruct the original input, \cite{Vincent}. The mapping from an input vector to a hidden/latent representation, the encoding step, can be described as:
+\subsection{Sparse autoencoder}
+A regular autoencoder seeks to learn a hidden representation that makes it possible to reconstruct the original input, \cite{Vincent}. The mapping from an input vector to a hidden/latent representation, the encoding step, can be described as:
 \begin{equation}
 y = f(x) = \sigma(\mathbf{W}x + \mathbf{b})
 \end{equation}
@@ -150,16 +150,15 @@ f(w_{ij}) = \begin{cases}
 
 Updating the weights and the biases is done with the use of the backpropagation algorithm. 
 
-
 \begin{figure*}[!h]
   \includegraphics[width=1\textwidth]{figures_4/setup_diagram.png}
-  \caption{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with nonnegative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. }\label{fig:setup}
+  \caption{a) shows a regular autoencoder consisting of an encoding and decoding layer. b) shows the deep stacked architecture with non-negative constraints used for this work. Spectrum of each Raman map, consisting of 1000 wavenumbers is given as input. }\label{fig:setup}
 \end{figure*}
 
 \section{Setup}
 \label{sec:setup}
 
-As proposed in \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. We also use a  burn-in strategy to avoid poor local minima. 
+As proposed in \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep non-negative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the Hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. We also use a burn-in strategy to avoid poor local minima. 
 
 \subsection{Verification}
 
@@ -193,7 +192,7 @@ The latent space after finetuning is displayed in Fig. \ref{fig:separationMNIST}
 	\label{fig:separationMNIST} 
 \end{figure}
 
-We also created a confusion matrix, Fig. \ref{fig:confusionMNIST}. The classification percentages are very high (greater or equal to 95\%) for both the validation and test datasets. This indicates that indeed the model works as hoped.
+We also created a confusion matrix, Fig. \ref{fig:confusionMNIST}. The classification percentages are very high (greater or equal to 95\%) for both the validation and test datasets. This indicates that indeed the model works as documented by \cite{Hosseini-Asl2016}.
 
 \begin{figure}[H]
 %	\includegraphics[width=1\linewidth]{figures_3/Confusion_matrix_fine_tune.png}  \\
@@ -238,7 +237,7 @@ As described, the model is a classification model with three classes with class 
 \vspace*{-0.2 cm}
 \subsection{Pure data}
 In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.\\
-The first indication that the model functions correctly is the component identification. In terms of peak and wave numbers the components in Fig. \ref{fig:components} look very similar to the ones described in the Setup Section \ref{sec:setup}, Fig. \ref{fig:raman}. 
+The first indication that the model functions correctly is the component identification. In terms of peak and wavenumbers the components in Fig. \ref{fig:components} look very similar to the ones described in the Setup Section \ref{sec:setup}, Fig. \ref{fig:raman}. 
 \begin{figure}[H]
 	\centering
 	% \includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
@@ -317,7 +316,7 @@ As the figure shows, the model performs quite poorly since the shape should foll
 	\label{fig:conc_sigmoids}
 \end{figure}
 %
-Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, Fig. ~\ref{fig:comparison} (same transformations as above). As it can be seen in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the Discussion Section ~\ref{sec:discussion}.
+Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, Fig. ~\ref{fig:comparison} (same transformations as above). As it can be seen in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the discussion Section ~\ref{sec:discussion}.
 \begin{figure}[H]
 	%       \includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
 	%       \includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
@@ -421,7 +420,7 @@ Intuitively, a 3 component NMF would be able to reconstruct the the two signals 
 
 It is clear that the method to achieve a sparse solution Eq. \eqref{eq:sparse} has its drawbacks, as one way to satisfy this, is to decrease the maximum activation during training. In our experience, this is exactly what happens, at least when using a too small batch size. However, increasing the batch size too we lose the benefits of this strategy. Furthermore, when applying the method to spectroscopic data, this formulation changes interpretation when moving from pre-training to fine tuning the full network. The reason for this is, as mentioned above, the background component is no longer needed, hence a sparser solution should be searched for. An alternative to Eq. \eqref{eq:sparse} would be to apply a exponential prior to the estimated components as done in \cite{snmf2006,ramanSNMF2014}.
 
-The resulting deep neural network is an effective classifier when detecting when there is a signal, with apparent issue illustrated in Fig. \ref{fig:confusion} being mainly an issue of tuning our threshold for creating the background class. When the network is applied to mixed data, an undesired behaviour is observed in both Fig. \ref{fig:activations} (left) and Fig. \ref{fig:comparison} (left). The probabilities for classes 0 and 1 lose their interpretation, as the Softmax function enhances even small differences in its inputs. However, in Fig. \ref{fig:activations} (right) and Fig. \ref{fig:Dspace} (right) we see that the output of the sigmoid activation functions is a non decreasing function of the amount signal (both when varying D and concentration). From Fig. \ref{fig:conc_sigmoids} and Fig. \ref{fig:comparison} (right) it is clear that a extra layer is needed in order to perform on the same level as NMF. This could be done by changing the Softmax layer into a regression layer.
+The resulting deep neural network is an effective classifier when detecting when there is a signal, with apparent issue illustrated in Fig. \ref{fig:confusion} being mainly an issue of tuning our threshold for creating the background class. When the network is applied to mixed data, an undesired behaviour is observed in both Fig. \ref{fig:activations} (left) and Fig. \ref{fig:comparison} (left). The probabilities for classes 0 and 1 lose their interpretation, as the Softmax function enhances even small differences in its inputs. However, in Fig. \ref{fig:activations} (right) and Fig. \ref{fig:Dspace} (right) we see that the output of the sigmoid activation functions is a non-decreasing function of the amount signal (both when varying D and concentration). From Fig. \ref{fig:conc_sigmoids} and Fig. \ref{fig:comparison} (right) it is clear that a extra layer is needed in order to perform on the same level as NMF. This could be done by changing the Softmax layer into a regression layer.
 
 \section{Conclusion}
 \label{sec:conclusion}
