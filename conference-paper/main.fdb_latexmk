@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1515007635 "main.aux" "main.bbl" "main" 1515007955
+["bibtex main"] 1515007635 "main.aux" "main.bbl" "main" 1515015737
   "./IEEEbib.bst" 1514448676 18924 9ff833f4bf67f47893e44ee17b52d211 ""
-  "main.aux" 1515007954 7413 c0034eb0c2a03c18cc3764a5531370e3 ""
+  "main.aux" 1515015737 7413 c0034eb0c2a03c18cc3764a5531370e3 ""
   "mendeley.bib" 1515007010 7938 0ac232b3a13deada0d943fa99015b234 ""
   (generated)
-  "main.blg"
   "main.bbl"
-["pdflatex"] 1515007952 "c:\Users\jakob\Git\Deeplearning-DTU\conference-paper\main.tex" "main.pdf" "main" 1515007955
+  "main.blg"
+["pdflatex"] 1515015734 "c:\Users\jakob\Git\Deeplearning-DTU\conference-paper\main.tex" "main.pdf" "main" 1515015737
   "02460.sty" 1514448676 9443 2f514174393fab9c5bbe6699e10ee523 ""
   "c:/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1514232392 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1514232673 3332 103109f5612ad95229751940c61aada0 ""
@@ -89,7 +89,7 @@
   "c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1514235148 2559814 7e94a0455cfeacc6da61c938f5be0661 ""
   "c:/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1514235248 4127105 61b5021537d4dbe03d3d33728abe0513 ""
   "c:/texlive/2017/texmf.cnf" 1514235134 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "c:\Users\jakob\Git\Deeplearning-DTU\conference-paper\main.tex" 1515007951 38055 9d297063c3b34e72d0666a1e99bf7fe8 ""
+  "c:\Users\jakob\Git\Deeplearning-DTU\conference-paper\main.tex" 1515015734 38054 05352cfcf1d7252595623b63225f4750 ""
   "figures_3/raman_sim_hotspots.png" 1514448676 13539 abd0add8b54e18e844cd3d76c354d015 ""
   "figures_4/Confusion_matrix_fine_tune_2.png" 1515007010 41695 753702ca4fbbe67dd8e3c68a1d32f0e7 ""
   "figures_4/DNN_D_vs_act_6.png" 1515007010 99328 b822211d954b318234c53904f4a58cf5 ""
@@ -105,12 +105,12 @@
   "figures_4/raman_sim_second_softmax_encode_2.png" 1515007010 22688 11f056900c81c1b4988b6cd0f34a5c36 ""
   "figures_4/raman_sim_training_data_2.png" 1515007010 68924 4bbd59fd4ea255c308a385094385c454 ""
   "figures_4/setup_diagram.png" 1515007010 41534 75fe86a95604e1c6f7d34c9a2621c5ac ""
-  "main.aux" 1515007954 7413 c0034eb0c2a03c18cc3764a5531370e3 ""
+  "main.aux" 1515015737 7413 c0034eb0c2a03c18cc3764a5531370e3 ""
   "main.bbl" 1515007636 2671 0a0857e7816d7015ea9e5299628bfa84 "bibtex main"
-  "main.out" 1515007954 796 89e3b6e6905bf5cd604c24df79fceb12 ""
-  "main.tex" 1515007951 38055 9d297063c3b34e72d0666a1e99bf7fe8 ""
+  "main.out" 1515015737 796 89e3b6e6905bf5cd604c24df79fceb12 ""
+  "main.tex" 1515015734 38054 05352cfcf1d7252595623b63225f4750 ""
   (generated)
   "main.log"
-  "main.out"
-  "main.pdf"
   "main.aux"
+  "main.pdf"
+  "main.out"
