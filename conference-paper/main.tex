@@ -53,7 +53,7 @@
 \maketitle
 %
 \begin{abstract}
-The standard tool to analyze raman spectroscopy signal is non-negative matrix factorization (NMF). In some of the cases, the observed signal is not a linear combination of pure spectra, thus removing the basic assumption behind using NMF for analyzing these signals. The research question addressed in this paper is whether the use of non-negative sparse autoenconders are able to model the nonlinearities and thus are able to correctly deconvolve Raman Spectre. A model used for this purpose has been initially tested on the classical MNIST dataset with good results. A simulated raman spectra dataset has been created and the same model has been compared with the classical approach NMF. As the results indicate, NMF performs better than the proposed model. However there is a strong belief that few changes in the model will improve the results significantly.
+The standard tool to analyze raman spectroscopy signal is non-negative matrix factorization (NMF). In some of the cases, the observed signal is not a linear combination of pure spectra, thus removing the basic assumption behind using NMF for analyzing these signals. The research question addressed in this paper is whether the use of non-negative sparse autoenconders are able to model the nonlinearities and thus are able to correctly deconvolve Raman Spectre. A model used for this purpose has been initially tested on the classical MNIST dataset with good results. A simulated raman spectra dataset has been created and the same model has been compared with the classical approach NMF. As the results indicate, NMF performs better than the proposed model. However there is a strong belief that a few changes in the model will improve the results significantly.
 \end{abstract}
 %
 \begin{keywords}
@@ -65,9 +65,9 @@ Raman spectroscopy, autoencoder, nonnegativity constraints, non-negative matrix 
 
 Raman scattering is a technique used to detect and identify molecules using the interaction of photons. It is a technique that is commonly used in chemistry and physics for detecting molecules by observing their vibrational and rotational modes. This is completed with the use of laser light. The photon excites the sample which causes scattering, meaning the photon has a change in energy over a short time period. This energy-change is reflected as a shift in frequency, also called a stokes shift, and by analysing the spectrum the molecules and combination of molecules can be identified. 
 
-Surface-enhanced Raman Spectroscopy (SERS) is an enhancement of Raman Scattering, that uses surfaces such as metal or nanostructures to absorb molecules. This enables the identification of single molecules.  For instance, noble metal nanostructures can concentrate light which greatly enhances the electromagnetic field near the nanostructure. These areas become so called "hot spots" that amplify weak Raman scattering signals. The placement and design of these nanostructers with high SERS preformance is beyond the scope of this work, however additional information can be found in \cite{Wei2013} and references herein.
+Surface-enhanced Raman Spectroscopy (SERS) is an enhancement of Raman Scattering, that uses surfaces such as metal or nanostructures to absorb molecules. This enables the identification of single molecules.  For instance, noble metal nanostructures can concentrate light which greatly enhances the electromagnetic field near the nanostructure. These areas become the so called "hot spots" that amplify weak Raman scattering signals. The placement and design of these nanostructers with high SERS preformance is beyond the scope of this work, however additional information can be found in \cite{Wei2013} and references herein.
 
-Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. This provides very large complex matrices that contain patterns and structures. Multivariate curve resolution methods (MCR) and NMF (Nonnegative matrix factorization) have successfully been applied for matrix factorization.\cite{Sajda} These methods do however fail at very low signal-to-noise ratios and any meaningful spectral components are difficult to recover. This is moreover increasingly difficult when interactions create interactions that are not linear seperatable. \cite{Alstrom2017}
+Modern SERS analysis is done with highly efficient nanostructures, and lasers with low linewidths resulting in very highly resoluted Raman intensity spectras. This provides very large complex matrices that contain patterns and structures. Multivariate curve resolution methods (MCR) and NMF (Nonnegative matrix factorization) have successfully been applied for matrix factorization \cite{Sajda}. These methods do however fail at very low signal-to-noise ratios and any meaningful spectral components are difficult to recover. This is moreover increasingly difficult when interactions create interactions that are not linear separable \cite{Alstrom2017}.
 
 This work aims to evaluate the application of Sparse Autoencoders with non-negativity constraints on Raman spectra obtained from SERS. The novelty of this work consists of comparing traditional curve resolution methods such as NMF to the methodology and work completed by \cite{Hosseini-Asl2016}.
 
@@ -81,16 +81,16 @@ This work seeks to compare traditional and proven methods for SERS analysis, i.e
 
 \subsection{Non-negative matrix factorization}
 
-Non-negative matrix factorization (NMF) consists of factorizing a original matrix $V$, with only positive elements, into two positive matrices $W$ and $H$. \cite{Seung1999}
+Non-negative matrix factorization (NMF) consists of factorizing a original matrix $V$, with only positive elements, into two positive matrices $W$ and $H$, \cite{Seung1999}.
 
 
 \begin{equation}
 V \approx W \times H
 \end{equation}
 
-Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship with the columns of $V$. So for instance, a matrix V of size $n \times m$ can be factorized into a matrix $W$ of size $n \times k$ and a matrix $H$ of size $k \times m$, where $k$ is the number of components. Approaching the intuitive point of view, $W$ and $H$ can be seen as components that combined approximate the original signal $V$.
+Where columns of $W$ are considered basis vectors, and each column in $H$ is considered an encoding with a one-to-one relationship with the columns of $V$. Thus, for instance, a matrix V of size $n \times m$ can be factorized into a matrix $W$ of size $n \times k$ and a matrix $H$ of size $k \times m$, where $k$ is the number of components. Approaching the intuitive point of view, $W$ and $H$ can be seen as components that combined approximate the original signal $V$.
 
-An iterative algorithm is considered for NMF, which shares similar monotonic convergence as the EM algorithm. \cite{Dempster1977}. Moreover, the rules of update preserve non-negativity of $W$ and $H$. The algorithm approaches the problem by initialization of $W$ and $H$ as non-negative, and then update the values in $W$ and $H$ until local maximima is obtained and both matrixes are considered stable. The rules of multiplicative update can be defined as:
+An iterative algorithm is considered for NMF, which shares similar monotonic convergence as the EM algorithm, \cite{Dempster1977}. Moreover, the rules of update preserve non-negativity of $W$ and $H$. The algorithm approaches the problem by initialization of $W$ and $H$ as non-negative, and then update the values in $W$ and $H$ until local maxima is obtained and both matrixes are considered stable. The rules of multiplicative update can be defined as:
 
 \begin{equation}
 H^{n+1} \leftarrow H^{n} \frac{(W^n)^TV}{(W^n)^TW^nH^n}
@@ -100,7 +100,7 @@ and
 W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{WH^{n+1}(H^{n+1})^T}
 \end{equation}
 
-This however leads to an optimization that is convex for $W$ and $H$, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while minimizing least squares for $W$, and 2) keeping $W$ fixed while minimizing least squares for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
+This, however, leads to an optimization that is convex for $W$ and $H$, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while minimizing least squares for $W$, and 2) keeping $W$ fixed while minimizing least squares for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
 
 \subsection{Sparse auto-encoder}
 A regular auto-encoder seeks to learn a hidden representation that makes it possible to reconstruct the original input, \cite{Vincent}. The mapping from an input vector to a hidden/latent representation, the encoding step, can be described as:
@@ -114,7 +114,7 @@ Where $x$ is the input vector and $\mathbf{W}$ is a matrix of weights and $\math
 z = g(y) = \sigma(\mathbf{W'}x + \mathbf{b'})
 \end{equation}
 
-Where $z$ can be seen as the reconstructed vector, and the weight matrix $W'$ is the reverse mapping. The weights at both the encoding and decoding layer are to be optimized as to minimize a "reconstruction error", thus the approach here is unsupervised. This can be formulated as the average reconstruction error using the squared error as a loss function
+Where $z$ can be seen as the reconstructed vector, and the weight matrix $W'$ is the reverse mapping. The weights at both the encoding and decoding layer are to be optimized in order to minimize a "reconstruction error", thus the approach here is unsupervised. This can be formulated as the average reconstruction error using the squared error as a loss function
 
 \begin{equation}
 J_E(\mathbf{W},\mathbf{b}) = \frac{1}{N} \sum_n^N || x^i - z^i || ^2
@@ -127,7 +127,7 @@ Imposing a sparse representation can also be seen as limiting the "activation" o
   J_{KL}(p || \hat{\mathbf{p}}) = \sum_{j=1}^n p \log\frac{p}{\hat{p_{j}}} + (1-p) \log\frac{1-p}{1-\hat{p}_j}
 \end{equation} \label{eq:sparse}
 
-Here $\hat{\mathbf{p}}$ is a vector of average activations, i.e. per hidden-layer. This combined with a weight decay and the reconstruction error provides with the cost function used for a sparse autoencoder \cite{Hosseini-Asl2016}
+Here $\hat{\mathbf{p}}$ is a vector of average activations, i.e. per hidden-layer. This combined with a weight decay and the reconstruction error provides the cost function used for a sparse autoencoder, \cite{Hosseini-Asl2016}
 \begin{equation}\label{eq:lossfunc}
 J(\mathbf{W},\mathbf{b}) = J_E(\mathbf{W},\mathbf{b}) + \beta J_{KL}(p || \hat{\mathbf{p}}) + \frac{\lambda}{2}\sum_{l=1}^2\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}} (w_{ij}^{l})^2
 \end{equation}
@@ -157,13 +157,34 @@ Updating the weights and the biases is done with the use of backpropagation algo
 \section{Setup}
 \label{sec:setup}
 
-As proposed \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
+As proposed in \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
 
 \subsection{Verification}
 
-MNIST verification
+For checking that indeed the deep-learning model, NCAE, is implemented correctly, a verification using the MNIST data set has been produced. The parameters used in the verification are the same as in \cite{Hosseini-Asl2016} with the exception of the nonnegativity constraint penalty, $\alpha$ which is changed. For illustration, the used parameters are displayed in Table \ref{tab:parameters},
 
-Add a reference with the parameters used for both models from the paper. The sparsity is different. % JSL: it is the non-negativity that is different
+\begin{table}[h]
+	\centering
+\begin{tabular}{l*{6}{c}r}
+	\hline
+	Parameters             & NCAE \\
+	\hline
+	Sparsity penalty ($\beta$) & 3  \\
+	\hline
+	Sparsity parameter (p)            & 0.05  \\
+	\hline
+	Weight decay penalty ($\lambda$)           & -  \\
+	\hline
+	Nonnegativity constraint penalty ($\alpha$)     & 0.1  \\
+	\hline
+	Convergence tolerance    & 1e-9  \\
+	\hline
+	Maximum No. of Iterations & 400 \\
+	\hline
+\end{tabular}
+   \caption{NCAE parameters used for verification using MNIST data}
+\label{tab:parameters} 
+\end{table}
 
 
 \begin{figure}[H]
@@ -171,6 +192,7 @@ Add a reference with the parameters used for both models from the paper. The spa
 %	\includegraphics[width=1\linewidth]{figures_3/latent_space_finetune_no_legend.png}  
 	\includegraphics[width=1\linewidth]{latent_space_finetune_no_legend.png}  
 	\caption{MNIST latent space after finetuning}
+	\label{fig:separation} 
 \end{figure}
 
 
@@ -178,6 +200,7 @@ Add a reference with the parameters used for both models from the paper. The spa
 %	\includegraphics[width=1\linewidth]{figures_3/Confusion_matrix_fine_tune.png}  \\
 	\includegraphics[width=1\linewidth]{Confusion_matrix_fine_tune_2.png}  
 	\caption{MNIST confusion matrix}
+	\label{fig:confusionMNIST} 
 \end{figure}
 
 
