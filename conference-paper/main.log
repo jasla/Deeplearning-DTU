@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.4.11)  3 JAN 2018 14:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.4.11)  3 JAN 2018 16:26
 entering extended mode
 **./main.tex
 (main.tex
@@ -366,7 +366,7 @@ bx/n/10 W\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 b\OT1/cmr/m/n/10 ) + \OML/cmm/m/it
 r/m/n/10 )
  []
 
-<figures_4/setup_diagram.png, id=96, 735.74875pt x 199.74625pt>
+<figures_4/setup_diagram.png, id=94, 735.74875pt x 199.74625pt>
 File: figures_4/setup_diagram.png Graphic file (type png)
 
 <use figures_4/setup_diagram.png>
@@ -550,7 +550,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 455.
 Here is how much of TeX's memory you used:
  7004 strings out of 493334
  107009 string characters out of 3136675
- 205127 words of memory out of 3000000
+ 205131 words of memory out of 3000000
  10399 multiletter control sequences out of 15000+200000
  24646 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -569,7 +569,7 @@ fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
 w/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/ut
 mr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 914900 bytes).
+Output written on main.pdf (6 pages, 914898 bytes).
 PDF statistics:
  283 PDF objects out of 1000 (max. 8388607)
  53 named destinations out of 1000 (max. 500000)

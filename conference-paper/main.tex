@@ -53,7 +53,7 @@
 \maketitle
 %
 \begin{abstract}
-The standard tool to analyze raman spectroscopy signal is non-negative matrix factorization (NMF). In some of the cases, the observed signal is not a linear combination of pure spectra, thus removing the basic assumption behind using NMF for analyzing these signals. The research question addressed in this paper is whether the use of non-negative sparse autoenconders are able to model the nonlinearities and thus are able to correctly deconvolve Raman Spectre. A model used for this purpose has been initially tested on the classical MNIST dataset with good results. A simulated raman spectra dataset has been created and the same model has been compared with the classical approach NMF. As the results indicate, NMF performs better than the proposed model. However there is a strong belief that a few changes in the model will improve the results significantly.
+The standard tool to analyze raman spectroscopy signal is non-negative matrix factorization (NMF). In some of the cases, the observed signal is not a linear combination of pure spectra, thus removing the basic assumption behind using NMF for analyzing these signals. The research question addressed in this paper is whether the use of non-negative sparse autoenconders are able to model the nonlinearities and thus are able to correctly deconvolve Raman Spectre. A deep network model used for this purpose has been initially tested on the classical MNIST dataset with good results. A simulated Raman spectra dataset has been created and a similar deep network model has been compared with the classical approach NMF. As the results indicate, NMF performs better than the proposed model. However there is a strong belief that a few changes in the model will improve the results significantly.
 \end{abstract}
 %
 \begin{keywords}
@@ -173,7 +173,7 @@ For checking that indeed the deep network model, NCAE, is implemented correctly,
 	\hline
 	Sparsity penalty ($\beta$) & 3 & 3\\
 	\hline
-	Sparsity parameter (p)            & 0.05 & 0.25/0.33  \\
+	Sparsity parameter (p)            & 0.05 & 0.33/0.25  \\
 	\hline
 	Weight decay penalty ($\lambda$)           & - & - \\
 	\hline
@@ -193,7 +193,7 @@ The latent space after finetuning is displayed in Fig. \ref{fig:separationMNIST}
 	\label{fig:separationMNIST} 
 \end{figure}
 
-We also created a confusion matrix, Fig. \ref{fig:confusionMNIST}. The classification percentages are very high (greater and equal to 95\%) for both the validation and test datasets. This indicates that indeed the model works as hoped.
+We also created a confusion matrix, Fig. \ref{fig:confusionMNIST}. The classification percentages are very high (greater or equal to 95\%) for both the validation and test datasets. This indicates that indeed the model works as hoped.
 
 \begin{figure}[H]
 %	\includegraphics[width=1\linewidth]{figures_3/Confusion_matrix_fine_tune.png}  \\
@@ -229,7 +229,7 @@ Also, for visualization purposes, the profiles of the two "substances", class 0 
 	\label{fig:raman}
 \end{figure}
 
-The model parameters for the deep network is given in Table \ref{tab:parameters}. The sparsity parameter of the first layer is changed from 0.5 in the pre-training to 0.25 in the fine tuning phase of the deep network. This is done to ensure a background component in the autoencoder.
+The model parameters for the deep network is given in Table \ref{tab:parameters}. The sparsity parameter of the first layer is changed from 0.33 in the pre-training to 0.25 in the fine tuning phase of the deep network. This is done to ensure a background component in the autoencoder.
 \vspace*{-0.2 cm}
 \section{Results}
 \label{sec:results}
@@ -259,7 +259,7 @@ The weights for the second layer and softmax layer are visualized in Fig. ~\ref{
 \end{figure}
 %
 
-We plotted the confusion matrices for the validation and test data, Fig. \ref{fig:confusion}. When investigating the miss classifications, we find that when $D > 6\cdot 10^{-3}$, the model is predicting correctly. This indicates another tuning parameter should be used in terms of the threshold defining the background described in the Setup Section \ref{sec:setup}.
+We plotted the confusion matrices for the validation and test data, Fig. \ref{fig:confusion}. When investigating the missclassifications, we find that when $D > 6\cdot 10^{-3}$, the model is predicting correctly. This indicates another tuning parameter should be used in terms of the threshold defining the background described in the Setup Section \ref{sec:setup}.
 
 %We also plotted the confusion matrix for classification, Figure ~\ref{fig:confusion}. The value of 0.81 for the background signal class (class 2) indicates that further tuning of parameters needs to be done. The higher the classification percentage of the background signal, the better the model will identify correctly the two substances. %PROBLEM: THE CLASS LABELS CHANGE THROUGHOUT THE FIGURES. SOMETIMES, 1,2,3 OTHERS 0,1,2 + HARD TO SEE WHICH IS WHICH. %%JSL: Fixed
 
@@ -270,7 +270,7 @@ We plotted the confusion matrices for the validation and test data, Fig. \ref{fi
 	\centering
 	%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
 	\includegraphics[width=0.5\textwidth]{raman_sim_3_conf_matrix13_2.png}
-	\caption{Confuson matrix for the raman data}
+	\caption{Confuson matrix for the Raman data}
 	\label{fig:confusion}
 \end{figure}
 
@@ -313,7 +313,7 @@ As the figure shows, the model performs quite poorly since the shape should foll
 	\centering
 	%       \includegraphics[width=0.26\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
 	\includegraphics[width=0.26\textwidth]{DNN_pred_conc_sigmoid_2.png} 
-	\caption{Predicted concentration using activations from sigmoid function}
+	\caption{Predicted concentration using activations from the sigmoid function}
 	\label{fig:conc_sigmoids}
 \end{figure}
 %
@@ -421,7 +421,7 @@ Intuitively, a 3 component NMF would be able to reconstruct the the two signals 
 
 It is clear that the method to achieve a sparse solution Eq. \eqref{eq:sparse} has its drawbacks, as one way to satisfy this, is to decrease the maximum activation during training. In our experience, this is exactly what happens, at least when using a too small batch size. However, increasing the batch size too we lose the benefits of this strategy. Furthermore, when applying the method to spectroscopic data, this formulation changes interpretation when moving from pre-training to fine tuning the full network. The reason for this is, as mentioned above, the background component is no longer needed, hence a sparser solution should be searched for. An alternative to Eq. \eqref{eq:sparse} would be to apply a exponential prior to the estimated components as done in \cite{snmf2006,ramanSNMF2014}.
 
-The resulting deep neural network is an effective classifier when detecting when there is a signal, with apparent issue illustrated in Fig. \ref{fig:confusion} being mainly an issue of tuning our threshold for creating the background class. When the network is applied to mixed data, an undesired behaviour is observed in both Fig. \ref{fig:activations} (left) and \ref{fig:comparison} (left). The probabilities for classes 0 and 1 losses their interpretation, as the Softmax function enhances even small differences in its inputs. However, in Fig. \ref{fig:activations} (right) and \ref{fig:Dspace} (right) we see that the output of the sigmoid activation functions is a non decreasing function of the amount signal (both when varying D and concentration). From Fig. \ref{fig:conc_sigmoids} and \ref{fig:comparison} (right) it is clear that a extra layer is needed in order to perform on the same level as NMF. This could be done by changing the Softmax layer into a regression layer.
+The resulting deep neural network is an effective classifier when detecting when there is a signal, with apparent issue illustrated in Fig. \ref{fig:confusion} being mainly an issue of tuning our threshold for creating the background class. When the network is applied to mixed data, an undesired behaviour is observed in both Fig. \ref{fig:activations} (left) and Fig. \ref{fig:comparison} (left). The probabilities for classes 0 and 1 lose their interpretation, as the Softmax function enhances even small differences in its inputs. However, in Fig. \ref{fig:activations} (right) and Fig. \ref{fig:Dspace} (right) we see that the output of the sigmoid activation functions is a non decreasing function of the amount signal (both when varying D and concentration). From Fig. \ref{fig:conc_sigmoids} and Fig. \ref{fig:comparison} (right) it is clear that a extra layer is needed in order to perform on the same level as NMF. This could be done by changing the Softmax layer into a regression layer.
 
 \section{Conclusion}
 \label{sec:conclusion}
