@@ -19,7 +19,7 @@
 
 % Title.
 % ------
-\title{Raman spectroscopy deconvolution using stacked Auto-Encoders with non-negativity constraints}
+\title{Raman spectroscopy deconvolution using stacked Autoencoders with non-negativity constraints}
 %
 % Single address.
 % ---------------
@@ -97,10 +97,10 @@ H^{n+1} \leftarrow H^{n} \frac{(W^n)^TV}{(W^n)^TW^nH^n}
 \end{equation}
 and 
 \begin{equation}
-W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{WH^{n+1}(H^{n+1})^T}
+W^{n+1} \leftarrow W^{n} \frac{V(H^{n+1})^T}{W^{n}H^{n+1}(H^{n+1})^T}
 \end{equation}
 
-This, however, leads to an optimization that is convex for $W$ and $H$, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while minimizing least squares for $W$, and 2) keeping $W$ fixed while minimizing least squares for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
+This, however, leads to an optimization that is convex for $W$ and $H$ respectively, which in turn can require many iterations and result in poor local minima. For this problem, alternating least squares (ALS) is commonly used. This consists by alternating the optimization between $W$ and $H$, e.g. one interation consists of 1) keeping $H$ fixed while minimizing least squares for $W$, and 2) keeping $W$ fixed while minimizing least squares for $H$. Further details can be found in  \cite{Langville2014} and references herein. ALS is for the remainder for this work, assumed the default optimization method when mentioning NMF.
 
 \subsection{Sparse auto-encoder}
 A regular auto-encoder seeks to learn a hidden representation that makes it possible to reconstruct the original input, \cite{Vincent}. The mapping from an input vector to a hidden/latent representation, the encoding step, can be described as:
@@ -111,7 +111,7 @@ y = f(x) = \sigma(\mathbf{W}x + \mathbf{b})
 Where $x$ is the input vector and $\mathbf{W}$ is a matrix of weights and $\mathbf{b}$ is a bias vector. $\sigma$ is an element-wise logistic sigmoid. $y$ is the latent representation. From the latent representation it is then mapped back, i.e. reconstructed, in input space and can be described as:
 
 \begin{equation}
-z = g(y) = \sigma(\mathbf{W'}x + \mathbf{b'})
+z = g(y) = \mathbf{W'}y + \mathbf{b'}
 \end{equation}
 
 Where $z$ can be seen as the reconstructed vector, and the weight matrix $W'$ is the reverse mapping. The weights at both the encoding and decoding layer are to be optimized in order to minimize a "reconstruction error", thus the approach here is unsupervised. This can be formulated as the average reconstruction error using the squared error as a loss function
@@ -124,29 +124,31 @@ Where $N$ is the number of training samples. By limiting the size of the hidden 
 Imposing a sparse representation can also be seen as limiting the "activation" of the hidden units, using for instance the Kullback-Leibler (KL) divergence. By using the average activation of the hidden layer, sparsity can be enforced. A sparsity parameter is seleted, denoted $p$, which is a positive number close to zero. The KL divergence between the average activation and the sparsity parameter is then minimized using the following:
 
 \begin{equation}
+\label{eq:sparse}
   J_{KL}(p || \hat{\mathbf{p}}) = \sum_{j=1}^n p \log\frac{p}{\hat{p_{j}}} + (1-p) \log\frac{1-p}{1-\hat{p}_j}
-\end{equation} \label{eq:sparse}
+\end{equation} 
 
 Here $\hat{\mathbf{p}}$ is a vector of average activations, i.e. per hidden-layer. This combined with a weight decay and the reconstruction error provides the cost function used for a sparse autoencoder, \cite{Hosseini-Asl2016}
 \begin{equation}\label{eq:lossfunc}
-J(\mathbf{W},\mathbf{b}) = J_E(\mathbf{W},\mathbf{b}) + \beta J_{KL}(p || \hat{\mathbf{p}}) + \frac{\lambda}{2}\sum_{l=1}^2\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}} (w_{ij}^{l})^2
+J(\mathbf{W},\mathbf{b}) = J_E(\mathbf{W},\mathbf{b}) + \beta J_{KL}(p || \hat{\mathbf{p}}) + \frac{\lambda}{2}\sum_{l=1}^2\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}} f(w_{ij}^{l})
 \end{equation}
 
-Here $\beta$ regulate the sparsity penality, and $\lambda$ is a standard weight decay term while $s_l$ and $s_{l+1}$ is the size of connected hidden layers. 
+Here $\beta$ regulate the sparsity penality, and $\lambda$ is a  weight decay penalty and $f(w_{ij})$ is a standard weight decay term while $s_l$ and $s_{l+1}$ is the size of connected hidden layers. 
 
-\section{Non-negativity constraints}
+\subsection{Non-negativity constraints}
 \label{sec:prior}
 
-Much like NMF, the idea of part-based representation, intuitively consists of combining in an additive way. By applying non-negativity constraints on a sparse autoencoder, the reconstruction of the input data is claimed by \cite{Hosseini-Asl2016} to be improved, since the autoencoder is capable of decomposing data into sparse elements and additively combine them at the decoder. The work in \cite{Hosseini-Asl2016} proposes non-negativity by replacing the weight decay in Eq. \eqref{eq:lossfunc}. This replaces $\lambda$ with $\alpha$ which is greater or equal to zero. Moreover the function $f(x)$ is introduced on the weights which applies a non-negativity constraint, regularized by $\alpha$. 
+Much like NMF, the idea of part-based representation, intuitively consists of combining in an additive way. By applying non-negativity constraints on a sparse autoencoder, the reconstruction of the input data is claimed by \cite{Hosseini-Asl2016} to be improved, since the autoencoder is capable of decomposing data into sparse elements and additively combine them at the decoder. The work in \cite{Hosseini-Asl2016} proposes non-negativity by replacing the weight decay in Eq. \eqref{eq:lossfunc}. This replaces $\lambda$ with $\alpha$ which is greater or equal to zero. Moreover the function $f(x)$ is changed into Eq. \eqref{eq:non_neg} regularized by $\alpha$. 
 
 \begin{equation}
+\label{eq:non_neg}
 f(w_{ij}) = \begin{cases}
   w_{ij}^2 & w_{ij} < 0 \\
   0 & w_{ij} >
 \end{cases} 
-\end{equation}\label{eq:non_neg}
+\end{equation}
 
-Updating the weights and the biases is done with the use of backpropagation algorithm. 
+Updating the weights and the biases is done with the use of the backpropagation algorithm. 
 
 
 \begin{figure*}[!h]
@@ -157,11 +159,11 @@ Updating the weights and the biases is done with the use of backpropagation algo
 \section{Setup}
 \label{sec:setup}
 
-As proposed in \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. 
+As proposed in \cite{Hosseini-Asl2016} and \cite{Vincent}, a layer-wise training is used to pre-train each layer unsupervised such that features are learned. In this work, the deep nonnegative constrained autoencoder (NCAE) is replicated using the layered training approach. This means each layer of the deep architecture is trained individually, using a stacked approach. In other words, the hidden activations of the previous trained autoencoder is used as input for the next. The final autoencoder is used as input to a softmax classifier. After the individual stacked training approach, the whole network is combined and trained in a supervised fashion, e.g. finetuned. The authors propose the use of a batch gradient descent algorithm called Limited-memory BFGS (L-BFGS) quasi-Newton method which approximates the hessian matrix. However, since the implementation was done in TensorFlow (TF) a native TF optimizer, e.g. Adam, was used instead. We also use a  burn-in strategy to avoid poor local minima. 
 
 \subsection{Verification}
 
-For checking that indeed the deep-learning model, NCAE, is implemented correctly, a verification using the MNIST data set has been produced. The parameters used in the verification are the same as in \cite{Hosseini-Asl2016} with the exception of the nonnegativity constraint penalty, $\alpha$ which is changed. For illustration, the used parameters are displayed in Table \ref{tab:parameters},
+For checking that indeed the deep network model, NCAE, is implemented correctly, a verification using the MNIST data set has been produced. The model parameters used in the verification are the same as in \cite{Hosseini-Asl2016}. For illustration, the used model parameters are displayed in Table \ref{tab:parameters},
 
 \begin{table}[h]
 	\centering
@@ -177,10 +179,8 @@ For checking that indeed the deep-learning model, NCAE, is implemented correctly
 	\hline
 	Nonnegativity constraint penalty ($\alpha$)     & 0.003 & 0.1\\
 	\hline
-	Maximum No. of Iterations & 400 & 2000\\
-	\hline
 \end{tabular}
-   \caption{NCAE parameters used for verification using MNIST data}
+   \caption{Model parameters for MNIST/SERS data}
 \label{tab:parameters} 
 \end{table}
 
@@ -207,9 +207,9 @@ We also created a confusion matrix, Fig. \ref{fig:confusionMNIST}. The classific
 \subsection{Simulated Raman data}
 A simulated SERS dataset is created using MATLAB. The dataset is created using parameters such as the number of wavenumbers, and the size of the Raman map with additional parameters such as; a) Signal-to-background-ratio (SBR) that determines the intensity of the peaks with respect to the background. b) $K$ the number of Voight-profiles, e.g. the number of "substancens" or components in the spectrum and c) the number of hotspots in each Raman map.
 
-The dataset used for training consisted of 1000 wavenumbers using a Raman map size of 100 $\times$ 100 samples. The number of hotspots was 10 with an SBR of 0 dB. Measurement noise was given as $10^{-3}$. Two different substances were created using the same parameters, however varying $K$. The resulting training data, Raman spectra, consisting of $K=1$ and $K=2$ can be observed in Fig. \ref{fig:raman} on the top most subplots. These are for the remainder of the paper referenced as Component 1 and Component 2.
+The dataset used for training consisted of 1000 wavenumbers using a Raman map size of 100 $\times$ 100 samples. The number of hotspots was 10 with an SBR of 1 dB. Measurement noise was given as $10^{-3}$. Two different substances were created using the same parameters, however varying $K$. The resulting training data, Raman spectra, consisting of $K=1$ and $K=2$ can be observed in Fig. \ref{fig:raman} on the top most subplots. These are for the remainder of the paper referenced as Component 1 and Component 2.
 
-The test data is a mixture of both components with an added "anomaly" to the spectrum. This is to emulate a nonlinearity in the spectra when mixing components. The mixture levels are given in steps of 10\%, e.g. one test set consists of 10\% of Component 1 with 90\% of Component 2, and so on.\\
+To evaluate the model, a dataset of mixtures of both components with an added "anomaly" to the spectrum is created. This is to emulate a nonlinearity in the spectra when mixing components. The mixture levels are given in steps of 10\%, e.g. one test set consists of 10\% of Component 1 with 90\% of Component 2, and so on.\\
 The simulated hotspots can be visualized in Fig. \ref{fig:hotspots}.
 
 \begin{figure}[H]
@@ -229,58 +229,37 @@ Also, for visualization purposes, the profiles of the two "substances", class 0 
 	\label{fig:raman}
 \end{figure}
 
+The model parameters for the deep network is given in Table \ref{tab:parameters}. The sparsity parameter of the first layer is changed from 0.5 in the pre-training to 0.25 in the fine tuning phase of the deep network. This is done to ensure a background component in the autoencoder.
+\vspace*{-0.2 cm}
 \section{Results}
 \label{sec:results}
 This section contains the main results of the deep learning model described in the Setup Section \ref{sec:setup} for the simulated raman data set.\\
-As described, the model is a classification model with three classes with class 2 used for collecting the background signal. \\%. One of the classes is used for collecting the background signal.\\
+As described, the model is a classification model with three classes with class 2 used for collecting the background signal. First we present the results from training, validation and test on pure data and secondly the results when applying the model to mixed data.%. One of the classes is used for collecting the background signal.\\
+\vspace*{-0.2 cm}
+\subsection{Pure data}
 In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.\\
 The first indication that the model functions correctly is the component identification. In terms of peak and wave numbers the components in Fig. \ref{fig:components} look very similar to the ones described in the Setup Section \ref{sec:setup}, Fig. \ref{fig:raman}. 
 \begin{figure}[H]
 	\centering
-%	\includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
+	% \includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
 	\includegraphics[width=0.4\textwidth]{raman_sim_3_encode_layer_1_finetune_13.png}
 	\caption{Component identification}
 	\label{fig:components}
 \end{figure}
 %
-The weights for the second layer and softmax layer are visualized in Fig. ~\ref{fig:weights}. From Fig. \ref{fig:components} we see that units 1 and 2 are related to class 1. Further we see that these are related to components 3 and 1 + 2. Comparing Fig. \ref{fig:raman} to Fig. \ref{fig:hotspots} it is easily seen that this is class 1. The same can be done for class 0. In Figure ~\ref{fig:weights} we also see that activations go down for units 1 + 2 as the concentration of class 0 goes up and vice versa for unit 0.\\ 
+
+The weights for the second layer and softmax layer are visualized in Fig. ~\ref{fig:weights}. From Fig. \ref{fig:weights} we see that units 1 and 2 are related to class 1. Further we see that these are related to components 3 and 1 + 2, respectively. Comparing Fig. \ref{fig:components} to Fig. \ref{fig:raman} it is seen that these components describe class 1. The same can be done for class 0. In Fig. ~\ref{fig:activations} we also see that activations go down for units 1 + 2 as the concentration of class 0 goes up and vice versa for unit 0.\\ 
 % JSL: See below
 %
 \begin{figure}[H]
-%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_second_softmax_encode.png}
-  \includegraphics[width=0.5\textwidth]{raman_sim_second_softmax_encode_2.png}
-  \caption{Weights for the second and softmax layers}
-  \label{fig:weights}
+	%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_second_softmax_encode.png}
+	\includegraphics[width=0.5\textwidth]{raman_sim_second_softmax_encode_2.png}
+	\caption{Weights for the second and softmax layers}
+	\label{fig:weights}
 \end{figure}
 %
-An overall overview of the activations and probabilities over the D space can be viewed in Fig. ~\ref{fig:activations}. As it can be observed, the hot spots are activated (lighter tones) in both images similarly to the original hot spot simulation image, Fig. ~\ref{fig:hotspots}. For probabilities, the values are slightly biased towards class 1 (even though the concentration of class 0 is 0.9, it is still concluding that class 1 is present	in the center of the hot spots). %%Class 0 and class 1 represent the two substances while class 2 represents the background. Therefore, one might say that the model performs as expected. HOW TO EXPLAIN THE SIGMOID?
 
-%% JSL: Simple: from Figure 6 we see that units 1 and 2 are related to class 1. Further we see that these are related to comp. 3 and 1+2. Comparing Fig 5 to Fig 4 it is easily seen that this is class 1. The same can be done for class 0. In Figure 7 we see that the activations goes down for units 1+2 as the concentration of class 0 goes up and vice versa for unit 0
-%% Probabilities are a bit more difficult. I think is has to do with the fact that the parameter from unit 0 to class 0 is 17.37, while the parameters from units 1 and 2 to class 1 is 6.74 and 14.22 (20.96 in total). But don't you think it is enough to state that it is slightly biased towards class 1 (even though the concentration of class 0 is 0.9, it is still concluding that class 1 is present	in the center of the hot spots)
-\begin{figure}[H]
-	\centering
-%  \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
-%  \includegraphics[width=1\linewidth]{DNN_prop_sigmoid_im.png}
-	\includegraphics[width=0.25\textwidth]{DNN_prop_im.png} \hspace*{-.5cm}
-	\includegraphics[width=0.25\textwidth]{DNN_sigmoid_im.png}
-%  \caption{Activations}
-	\caption{Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.}
-    \label{fig:activations}
-\end{figure}
-%
-We also plotted a running average to check that indeed the probabilities for class 0, 1 and 2 (blue, green and purple solid lines) over space D behave as hoped. As one can see in Fig. ~\ref{fig:Dspace}, the behaviour is consistent with Fig. ~\ref{fig:activations}.
-% JSL: Perhaps not "expected", what about "hoped"?
-%
-\begin{figure}[H]
-	\centering
-%	\includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
-	\includegraphics[width=0.25\textwidth]{DNN_D_vs_prob_6_2.png} \hspace*{-.5cm}
-	\includegraphics[width=0.25\textwidth]{DNN_D_vs_act_6.png}	
-	\caption{Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.}
-	\label{fig:Dspace}
-\end{figure}
-%
-We plotted the confusion matrices for the test and training data, Fig. \ref{fig:confusion}. When investigating the missclassifications, we find that when $D > 6\cdot 10^{-3}$, the model is predicting correctly. This indicates another tuning parameter should be used in terms of the threshold defining the background described in the Setup Section \ref{sec:setup}.
+We plotted the confusion matrices for the validation and test data, Fig. \ref{fig:confusion}. When investigating the miss classifications, we find that when $D > 6\cdot 10^{-3}$, the model is predicting correctly. This indicates another tuning parameter should be used in terms of the threshold defining the background described in the Setup Section \ref{sec:setup}.
 
 %We also plotted the confusion matrix for classification, Figure ~\ref{fig:confusion}. The value of 0.81 for the background signal class (class 2) indicates that further tuning of parameters needs to be done. The higher the classification percentage of the background signal, the better the model will identify correctly the two substances. %PROBLEM: THE CLASS LABELS CHANGE THROUGHOUT THE FIGURES. SOMETIMES, 1,2,3 OTHERS 0,1,2 + HARD TO SEE WHICH IS WHICH. %%JSL: Fixed
 
@@ -288,44 +267,161 @@ We plotted the confusion matrices for the test and training data, Fig. \ref{fig:
 
 %% Well, I'm not quite sure if that is correct. When investigating just a bit, it is clear that the model is actually predicting correct (I've traced the indicies back to the original dataset, 
 \begin{figure}[H]
-  \centering
-%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
-  \includegraphics[width=0.5\textwidth]{raman_sim_3_conf_matrix13_2.png}
-  \caption{Confuson matrix for the Raman data}
-  \label{fig:confusion}
+	\centering
+	%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
+	\includegraphics[width=0.5\textwidth]{raman_sim_3_conf_matrix13_2.png}
+	\caption{Confuson matrix for the raman data}
+	\label{fig:confusion}
+\end{figure}
+
+\subsection{Mixed data}
+
+An overall overview of the activations and probabilities over the D space can be viewed in Fig. ~\ref{fig:activations}. As it can be observed, the hot spots are activated (lighter tones) in both images similarly to the original hot spot simulation image, Fig. ~\ref{fig:hotspots}. For probabilities, the values are slightly biased towards class 1 (even though the concentration of class 0 is 0.9, it is still concluding that class 1 is present in the center of the hot spots). %%Class 0 and class 1 represent the two substances while class 2 represents the background. Therefore, one might say that the model performs as expected. HOW TO EXPLAIN THE SIGMOID?
+
+%% JSL: Simple: from Figure 6 we see that units 1 and 2 are related to class 1. Further we see that these are related to comp. 3 and 1+2. Comparing Fig 5 to Fig 4 it is easily seen that this is class 1. The same can be done for class 0. In Figure 7 we see that the activations goes down for units 1+2 as the concentration of class 0 goes up and vice versa for unit 0
+%% Probabilities are a bit more difficult. I think is has to do with the fact that the parameter from unit 0 to class 0 is 17.37, while the parameters from units 1 and 2 to class 1 is 6.74 and 14.22 (20.96 in total). But don't you think it is enough to state that it is slightly biased towards class 1 (even though the concentration of class 0 is 0.9, it is still concluding that class 1 is present  in the center of the hot spots)
+\begin{figure}[H]
+	\centering
+	%  \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
+	%  \includegraphics[width=1\linewidth]{DNN_prop_sigmoid_im.png}
+	\includegraphics[width=0.25\textwidth]{DNN_prop_im.png} \hspace*{-.5cm}
+	\includegraphics[width=0.25\textwidth]{DNN_sigmoid_im.png}
+	%  \caption{Activations}
+	\caption{Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.}
+	\label{fig:activations}
 \end{figure}
 %
-In order to check how the model deals with the concentrations, we also made a predicted concentration using a simple transformation of the activations, Fig. ~\ref{fig:conc_sigmoids}. As the figure shows, the model performs quite poorly since the intersection should be close to the gray diagonals. %WEIRD SPACING, TRIED SOME THINGS BUT IT DOESN'T WORK.
+We also plotted a running average over space D for probabilities/activations for class/units 0, 1 and 2 (blue, green and purple solid lines).
+As one can see in Fig. ~\ref{fig:Dspace}, the behaviour is consistent with Fig. ~\ref{fig:activations}.
+% JSL: Perhaps not "expected", what about "hoped"?
+%
+\begin{figure}[H]
+	\centering
+	%       \includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
+	\includegraphics[width=0.25\textwidth]{DNN_D_vs_prob_6_2.png} \hspace*{-.5cm}
+	\includegraphics[width=0.25\textwidth]{DNN_D_vs_act_6.png}   
+	%       \caption{Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.}
+	\caption{Class probability (left) and activation of units in last hidden layer (right) versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.}
+	\label{fig:Dspace}
+\end{figure}
+
+%
+In order to check how the model deals with the concentrations, we also made a predicted concentration using transformations of the activations, Fig. ~\ref{fig:conc_sigmoids}. The activations are mean normalized and the weighted is normalized with respect to D. 
+As the figure shows, the model performs quite poorly since the shape should follow the gray diagonals. 
 % JSL: If you mean the spacing below Figure 10, then it is because Latex tries to fill the entire page
 \begin{figure}[H]
 	\centering
-%	\includegraphics[width=0.26\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
+	%       \includegraphics[width=0.26\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
 	\includegraphics[width=0.26\textwidth]{DNN_pred_conc_sigmoid_2.png} 
-	\caption{Predicted concentration using activations from the sigmoid function}
+	\caption{Predicted concentration using activations from sigmoid function}
 	\label{fig:conc_sigmoids}
 \end{figure}
 %
-Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, Fig. ~\ref{fig:comparison}. As it can be seen in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the Discussion Section ~\ref{sec:discussion}.
+Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, Fig. ~\ref{fig:comparison} (same transformations as above). As it can be seen in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the Discussion Section ~\ref{sec:discussion}.
 \begin{figure}[H]
-%	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
-%	\includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
+	%       \includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
+	%       \includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
 	\includegraphics[width=0.25\textwidth]{DNN_pred_conc_prob_2.png} \hspace*{-.5cm}
 	\includegraphics[width=0.25\textwidth]{nmf_pred_conc_2.png}
 	\caption{Predicted concentration using probabilities (left) and NMF (right)}
 	\label{fig:comparison}
 \end{figure}
+
+%\section{Results}
+%\label{sec:results}
+%This section contains the main results of the deep learning model described in the Setup Section \ref{sec:setup} for the simulated raman data set.\\
+%As described, the model is a classification model with three classes with class 2 used for collecting the background signal. \\%. One of the classes is used for collecting the background signal.\\
+%In order to check that indeed the model works as expected, several testing figures have been generated. These figures are presented below with a small description.\\
+%The first indication that the model functions correctly is the component identification. In terms of peak and wave numbers the components in Fig. \ref{fig:components} look very similar to the ones described in the Setup Section \ref{sec:setup}, Fig. \ref{fig:raman}. 
+%\begin{figure}[H]
+%	\centering
+%%	\includegraphics[width=0.4\textwidth]{figures_3/raman_sim_3_encode_layer_1_finetune_13.png}
+%	\includegraphics[width=0.4\textwidth]{raman_sim_3_encode_layer_1_finetune_13.png}
+%	\caption{Component identification}
+%	\label{fig:components}
+%\end{figure}
+%%
+%The weights for the second layer and softmax layer are visualized in Fig. ~\ref{fig:weights}. From Fig. \ref{fig:components} we see that units 1 and 2 are related to class 1. Further we see that these are related to components 3 and 1 + 2. Comparing Fig. \ref{fig:raman} to Fig. \ref{fig:hotspots} it is easily seen that this is class 1. The same can be done for class 0. In Figure ~\ref{fig:weights} we also see that activations go down for units 1 + 2 as the concentration of class 0 goes up and vice versa for unit 0.\\ 
+%% JSL: See below
+%%
+%\begin{figure}[H]
+%%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_second_softmax_encode.png}
+%  \includegraphics[width=0.5\textwidth]{raman_sim_second_softmax_encode_2.png}
+%  \caption{Weights for the second and softmax layers}
+%  \label{fig:weights}
+%\end{figure}
+%%
+%An overall overview of the activations and probabilities over the D space can be viewed in Fig. ~\ref{fig:activations}. As it can be observed, the hot spots are activated (lighter tones) in both images similarly to the original hot spot simulation image, Fig. ~\ref{fig:hotspots}. For probabilities, the values are slightly biased towards class 1 (even though the concentration of class 0 is 0.9, it is still concluding that class 1 is present	in the center of the hot spots). %%Class 0 and class 1 represent the two substances while class 2 represents the background. Therefore, one might say that the model performs as expected. HOW TO EXPLAIN THE SIGMOID?
+%
+%%% JSL: Simple: from Figure 6 we see that units 1 and 2 are related to class 1. Further we see that these are related to comp. 3 and 1+2. Comparing Fig 5 to Fig 4 it is easily seen that this is class 1. The same can be done for class 0. In Figure 7 we see that the activations goes down for units 1+2 as the concentration of class 0 goes up and vice versa for unit 0
+%%% Probabilities are a bit more difficult. I think is has to do with the fact that the parameter from unit 0 to class 0 is 17.37, while the parameters from units 1 and 2 to class 1 is 6.74 and 14.22 (20.96 in total). But don't you think it is enough to state that it is slightly biased towards class 1 (even though the concentration of class 0 is 0.9, it is still concluding that class 1 is present	in the center of the hot spots)
+%\begin{figure}[H]
+%	\centering
+%%  \includegraphics[width=1\linewidth]{figures_3/DNN_prop_sigmoid_im.png}
+%%  \includegraphics[width=1\linewidth]{DNN_prop_sigmoid_im.png}
+%	\includegraphics[width=0.25\textwidth]{DNN_prop_im.png} \hspace*{-.5cm}
+%	\includegraphics[width=0.25\textwidth]{DNN_sigmoid_im.png}
+%%  \caption{Activations}
+%	\caption{Left is the probabilities of each class, to the right is the activation of each hidden unit when changing the concentration of each substrate.}
+%    \label{fig:activations}
+%\end{figure}
+%%
+%We also plotted a running average to check that indeed the probabilities for class 0, 1 and 2 (blue, green and purple solid lines) over space D behave as hoped. As one can see in Fig. ~\ref{fig:Dspace}, the behaviour is consistent with Fig. ~\ref{fig:activations}.
+%% JSL: Perhaps not "expected", what about "hoped"?
+%%
+%\begin{figure}[H]
+%	\centering
+%%	\includegraphics[width=0.3\textwidth]{figures_3/DNN_D_vs_prob_6.png}
+%	\includegraphics[width=0.25\textwidth]{DNN_D_vs_prob_6_2.png} \hspace*{-.5cm}
+%	\includegraphics[width=0.25\textwidth]{DNN_D_vs_act_6.png}	
+%	\caption{Probability versus D space for a concentration of 0.7 for class 0 and 0.3 for class 1. Lines are running averages with a window size of 100.}
+%	\label{fig:Dspace}
+%\end{figure}
+%%
+%We plotted the confusion matrices for the test and training data, Fig. \ref{fig:confusion}. When investigating the missclassifications, we find that when $D > 6\cdot 10^{-3}$, the model is predicting correctly. This indicates another tuning parameter should be used in terms of the threshold defining the background described in the Setup Section \ref{sec:setup}.
+%
+%%We also plotted the confusion matrix for classification, Figure ~\ref{fig:confusion}. The value of 0.81 for the background signal class (class 2) indicates that further tuning of parameters needs to be done. The higher the classification percentage of the background signal, the better the model will identify correctly the two substances. %PROBLEM: THE CLASS LABELS CHANGE THROUGHOUT THE FIGURES. SOMETIMES, 1,2,3 OTHERS 0,1,2 + HARD TO SEE WHICH IS WHICH. %%JSL: Fixed
+%
+%%% JSL: SORRY, by mistake I reversed the input when computing the confusion matrices. 
+%
+%%% Well, I'm not quite sure if that is correct. When investigating just a bit, it is clear that the model is actually predicting correct (I've traced the indicies back to the original dataset, 
+%\begin{figure}[H]
+%  \centering
+%%  \includegraphics[width=0.5\textwidth]{figures_2/raman_sim_3_conf_matrix13.png}
+%  \includegraphics[width=0.5\textwidth]{raman_sim_3_conf_matrix13_2.png}
+%  \caption{Confuson matrix for the Raman data}
+%  \label{fig:confusion}
+%\end{figure}
+%%
+%In order to check how the model deals with the concentrations, we also made a predicted concentration using a simple transformation of the activations, Fig. ~\ref{fig:conc_sigmoids}. As the figure shows, the model performs quite poorly since the intersection should be close to the gray diagonals. %WEIRD SPACING, TRIED SOME THINGS BUT IT DOESN'T WORK.
+%% JSL: If you mean the spacing below Figure 10, then it is because Latex tries to fill the entire page
+%\begin{figure}[H]
+%	\centering
+%%	\includegraphics[width=0.26\textwidth]{figures_2/DNN_pred_conc_sigmoid.png} 
+%	\includegraphics[width=0.26\textwidth]{DNN_pred_conc_sigmoid_2.png} 
+%	\caption{Predicted concentration using activations from the sigmoid function}
+%	\label{fig:conc_sigmoids}
+%\end{figure}
+%%
+%Finally, we also generated a comparison between NMF and the deep learning model for predicting concentrations, Fig. ~\ref{fig:comparison}. As it can be seen in the figures, NMF performs much better than the deep learning model. The difference between these results is described into depth in the Discussion Section ~\ref{sec:discussion}.
+%\begin{figure}[H]
+%%	\includegraphics[width=0.23\textwidth]{figures_2/DNN_pred_conc_prob.png}
+%%	\includegraphics[width=0.23\textwidth]{figures_2/nmf_pred_conc.png}
+%	\includegraphics[width=0.25\textwidth]{DNN_pred_conc_prob_2.png} \hspace*{-.5cm}
+%	\includegraphics[width=0.25\textwidth]{nmf_pred_conc_2.png}
+%	\caption{Predicted concentration using probabilities (left) and NMF (right)}
+%	\label{fig:comparison}
+%\end{figure}
 \section{Discussion}
 \label{sec:discussion}
 %JSL: Skal afsnittene rykkes om?
-The estimated components shown in Fig. \ref{fig:components} are essential peak detections, which is sufficient for a classification task. It is clear that the estimated components are not strictly non-negative. This is due to the non-negative formulation \eqref{eq:non_neg} being a soft-constraint, which is in contrast to the usual hard-constraint (projection) formulation used in NMF. A way to improve this is to use the same update strategy as Seung and Lee \cite{Seung1999}. Besides achieving strict non-negativity this also has the advantage that we decrease the number of hyper parameters that has to be tuned.
+The estimated components shown in Fig. \ref{fig:components} are essential peak detections, which is sufficient for a classification task. It is clear that the estimated components are not strictly non-negative. This is due to the non-negative formulation Eq. \eqref{eq:non_neg} being a soft-constraint, which is in contrast to the usual hard-constraint (projection) formulation used in NMF. A way to improve this is to use the same update strategy as Seung and Lee \cite{Seung1999}. Besides achieving strict non-negativity this also has the advantage that we decrease the number of hyper parameters that has to be tuned.
 
 Intuitively, a 3 component NMF would be able to reconstruct the the two signals in our data (one extra component is needed for the background). When using NCAE we were unable to achieve a satisfying first layer using only 3 components and needed to use 4 instead. As the background doesn't have to be modelled with the purpose of classification, this means that we end up with 3 components detecting the same peak. One solution to this would be to drop redundant components when fine tuning the final network (or even when increasing the depth of the network).
 
-It is clear that the method to achieve a sparse solution \eqref{eq:sparse} has its drawbacks, as one way to satisfy this, is to decrease the maximum activation during training. In our experience, this is exactly what happens, at least when using a too small batch size. However, increasing the batch size too we lose the benefits of this strategy. Furthermore, when applying the method to spectroscopic data, this formulation changes interpretation when moving from pre-training to fine tuning the full network. The reason for this is, as mentioned above, the background component is no longer needed, hence a sparser solution should be searched for. An alternative to \eqref{eq:sparse} would be to apply a sparse prior to the estimated components as done in \cite{snmf2006,ramanSNMF2014}.
+It is clear that the method to achieve a sparse solution Eq. \eqref{eq:sparse} has its drawbacks, as one way to satisfy this, is to decrease the maximum activation during training. In our experience, this is exactly what happens, at least when using a too small batch size. However, increasing the batch size too we lose the benefits of this strategy. Furthermore, when applying the method to spectroscopic data, this formulation changes interpretation when moving from pre-training to fine tuning the full network. The reason for this is, as mentioned above, the background component is no longer needed, hence a sparser solution should be searched for. An alternative to Eq. \eqref{eq:sparse} would be to apply a exponential prior to the estimated components as done in \cite{snmf2006,ramanSNMF2014}.
 
 The resulting deep neural network is an effective classifier when detecting when there is a signal, with apparent issue illustrated in Fig. \ref{fig:confusion} being mainly an issue of tuning our threshold for creating the background class. When the network is applied to mixed data, an undesired behaviour is observed in both Fig. \ref{fig:activations} (left) and \ref{fig:comparison} (left). The probabilities for classes 0 and 1 losses their interpretation, as the Softmax function enhances even small differences in its inputs. However, in Fig. \ref{fig:activations} (right) and \ref{fig:Dspace} (right) we see that the output of the sigmoid activation functions is a non decreasing function of the amount signal (both when varying D and concentration). From Fig. \ref{fig:conc_sigmoids} and \ref{fig:comparison} (right) it is clear that a extra layer is needed in order to perform on the same level as NMF. This could be done by changing the Softmax layer into a regression layer.
-
-
 
 \section{Conclusion}
 \label{sec:conclusion}
