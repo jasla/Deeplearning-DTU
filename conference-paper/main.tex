@@ -167,19 +167,17 @@ For checking that indeed the deep-learning model, NCAE, is implemented correctly
 	\centering
 \begin{tabular}{l*{6}{c}r}
 	\hline
-	Parameters             & NCAE \\
+	Parameters             & MNIST & SERS \\
 	\hline
-	Sparsity penalty ($\beta$) & 3  \\
+	Sparsity penalty ($\beta$) & 3 & 3\\
 	\hline
-	Sparsity parameter (p)            & 0.05  \\
+	Sparsity parameter (p)            & 0.05 & 0.25/0.33  \\
 	\hline
-	Weight decay penalty ($\lambda$)           & -  \\
+	Weight decay penalty ($\lambda$)           & - & - \\
 	\hline
-	Nonnegativity constraint penalty ($\alpha$)     & 0.1  \\
+	Nonnegativity constraint penalty ($\alpha$)     & 0.003 & 0.1\\
 	\hline
-	Convergence tolerance    & 1e-9  \\
-	\hline
-	Maximum No. of Iterations & 400 \\
+	Maximum No. of Iterations & 400 & 2000\\
 	\hline
 \end{tabular}
    \caption{NCAE parameters used for verification using MNIST data}
