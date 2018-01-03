@@ -331,7 +331,8 @@ The resulting deep neural network is an effective classifier when detecting when
 
 \section{Conclusion}
 \label{sec:conclusion}
-We applied NCAE to simulated SERS data consisting of pure signals to pre-train a deep neural network with a Softmax layer on top. The resulting network was with high precision able to distinguish pure signals from each other. When we applied the network to mixed data, the output probabilities from the Softmax layer wasn't related to the actual concentrations. The sigmoid activation functions indicated that changing the last layer into a regression layer, the network would perform comparable to NMF.
+We applied NCAE to simulated SERS data consisting of pure signals to pre-train a deep neural network with a Softmax layer on top. The resulting network was with high precision able to distinguish pure signals from each other. When we applied the network to mixed data, the output probabilities from the Softmax layer wasn't related to the actual concentrations. The sigmoid activation functions indicated that changing the last layer into a regression layer, the network would perform comparable to NMF.\\ The code can be found at:
+\href{https://github.com/jasla/Deeplearning-DTU/}{https://github.com/jasla/Deeplearning-DTU/} 
 
 % Below is an example of how to insert images. Delete the ``\vspace'' line,
 % uncomment the preceding line ``\centerline...'' and replace ``imageX.ps''
