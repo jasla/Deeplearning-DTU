@@ -20,54 +20,11 @@ from IPython import get_ipython
 get_ipython().run_line_magic('matplotlib','nbagg')
 get_ipython().run_line_magic('matplotlib','inline')
 import tensorflow as tf
-from tensorflow.python.ops.nn import sigmoid
 from sklearn.manifold import TSNE
 from sklearn.utils import shuffle
 from sklearn.metrics import confusion_matrix
 import itertools
-#%% Define some usefull functions
-def softmax(x):
-    expx = np.exp(x.T - np.max(x,1)).T # avoid numerically instability
-    soft_max = (expx.T * (1/ np.sum(expx,1))).T
-    return(soft_max)
-    
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues,
-                          include_colorbar = True):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
-    print(cm)
-
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title,fontsize = 20)
-    if include_colorbar:
-        plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45,fontsize = 15)
-    plt.yticks(tick_marks, classes,fontsize = 15)
-
-    fmt = '.2f' if normalize else 'd'
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, format(cm[i, j], fmt),
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-
-    plt.tight_layout()
-    plt.ylabel('True label',fontsize = 20)
-    plt.xlabel('Predicted label',fontsize = 20)
-    
-
+from tools import sigmoid, plot_confusion_matrix, softmax, running_average
 #%%
 
 data = np.load('data/mnist.npz')
